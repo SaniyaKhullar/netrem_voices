@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NetREm Voices: community testimonials</title>
+<meta name="description" content="Students and researchers share how they use NetREm, the Network Regression Embeddings tool for cell-type transcription factor coordination.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F6FF; --surface:#FFFFFF; --surface-2:#EBEEFF; --text:#1A1C3A; --muted:#565B85; --line:#D7DCF4;
+  --ink:#14163A; --ink-2:#22265E; --on-ink:#F2F3FF; --on-ink-muted:#AEB3E0;
+  --magenta:#E5438F; --cyan:#0FA3C0; --amber:#E89B0C; --lime:#3FAA45; --violet:#6F52F2; --coral:#F25C47;
+  --focus:#6F52F2; --star:#F2A91E;
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --r-sm:8px; --r-md:14px; --r-lg:26px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E0F2B; --surface:#171940; --surface-2:#1F2252; --text:#ECEEFF; --muted:#A6ABD8; --line:#2D3170;
+    --magenta:#FF62A8; --cyan:#3CCBE6; --amber:#FFBE3D; --lime:#6ED46A; --violet:#9C85FF; --coral:#FF7E6B;
+    --focus:#9C85FF; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E0F2B; --surface:#171940; --surface-2:#1F2252; --text:#ECEEFF; --muted:#A6ABD8; --line:#2D3170;
+  --magenta:#FF62A8; --cyan:#3CCBE6; --amber:#FFBE3D; --lime:#6ED46A; --violet:#9C85FF; --coral:#FF7E6B;
+  --focus:#9C85FF; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth; scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg,canvas{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1180px,100% - 2.5rem);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;letter-spacing:-0.02em}
+h2{font-size:clamp(2rem,4vw,3rem);font-weight:800}
+h3{font-size:1.25rem;font-weight:700}
+p{margin:0}
+
+/* ---------- top bar ---------- */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:color-mix(in srgb,var(--ink) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--on-ink)}
+.bar .wrap{display:flex;align-items:center;gap:1.5rem;height:60px}
+.brand{white-space:nowrap;display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-weight:800;font-size:1.2rem}
+.brand svg{width:30px;height:30px}
+.bar nav{margin-left:auto;display:flex;gap:.25rem;align-items:center}
+.bar nav a{white-space:nowrap;text-decoration:none;padding:.4rem .75rem;border-radius:999px;font-size:.95rem;color:var(--on-ink-muted)}
+.bar nav a:hover{color:var(--on-ink);background:rgba(255,255,255,.08)}
+.bar nav a.pill{background:var(--magenta);color:#fff;font-weight:700}
+.bar nav a.pill:hover{background:color-mix(in srgb,var(--magenta) 85%,#fff)}
+@media (max-width:720px){.bar nav a:not(.pill){display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:radial-gradient(1200px 600px at 75% 40%,var(--ink-2),var(--ink) 70%);color:var(--on-ink);overflow:hidden}
+.hero-graph{position:absolute;inset:0}
+.hero-graph canvas{display:block;width:100%;height:100%;cursor:default}
+.hero .wrap{position:relative;z-index:2;min-height:min(86vh,760px);display:flex;flex-direction:column;justify-content:center;padding-block:4rem 5rem;pointer-events:none}
+.hero-copy{max-width:38rem;pointer-events:auto}
+.hero h1{font-size:clamp(2.5rem,5.4vw,4.6rem);font-weight:800;letter-spacing:-0.035em;line-height:.98}
+.hero h1 .row{display:block}
+.hero h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--on-ink)}
+.hero .lede{margin-top:1.4rem;font-size:1.15rem;color:var(--on-ink-muted);max-width:30rem;line-height:1.55}
+.cta-row{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{appearance:none;border:0;cursor:pointer;font:700 1rem/1 var(--body);padding:.95rem 1.4rem;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:transform .15s ease, background .15s ease}
+.btn:active{transform:scale(.97)}
+.btn-hot{background:linear-gradient(100deg,var(--magenta),var(--coral));color:#fff;box-shadow:0 10px 30px -10px var(--magenta)}
+.btn-ghost{background:rgba(255,255,255,.08);color:var(--on-ink);border:1.5px solid rgba(255,255,255,.25)}
+.btn-ghost:hover{background:rgba(255,255,255,.14)}
+.btn-plain{background:var(--surface-2);color:var(--text)}
+.btn-plain:hover{background:var(--line)}
+.btn-dark{background:var(--text);color:var(--bg)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.hero-stats{margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:2rem;pointer-events:auto}
+.hero-stats div{display:flex;flex-direction:column}
+.hero-stats b{font-family:var(--display);font-size:2rem;font-weight:800;line-height:1}
+.hero-stats span{font-size:.9rem;color:var(--on-ink-muted);margin-top:.3rem}
+.hero-hint{position:absolute;right:1.25rem;bottom:1rem;z-index:3;font-size:.85rem;color:var(--on-ink-muted);pointer-events:none}
+.legend-dots{display:flex;flex-wrap:wrap;gap:.4rem 1rem;margin-top:1.25rem;font-size:.85rem;color:var(--on-ink-muted);pointer-events:auto}
+.legend-dots i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:.4rem;vertical-align:-1px}
+.tip{position:absolute;z-index:5;max-width:280px;background:var(--surface);color:var(--text);border-radius:var(--r-md);padding:.8rem 1rem;font-size:.92rem;line-height:1.45;box-shadow:0 18px 40px -12px rgba(0,0,0,.5);pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .12s, transform .12s}
+.tip.on{opacity:1;transform:none}
+.tip b{font-family:var(--display);display:block;font-size:1rem}
+.tip small{color:var(--muted)}
+@media (max-width:899px){
+  .hero-graph{position:relative;height:380px;inset:auto}
+  .hero{display:flex;flex-direction:column-reverse}
+  .hero .wrap{min-height:0;padding-block:2.5rem 3rem}
+  .hero-hint{display:none}
+}
+
+/* ---------- sections ---------- */
+section{padding-block:clamp(4rem,8vw,6.5rem)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:1rem 2rem;margin-bottom:2.5rem}
+.sec-head p{color:var(--muted);max-width:36rem}
+
+/* pulse */
+.pulse{display:grid;grid-template-columns:1.1fr 1fr 1fr;background:var(--surface);border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line)}
+.pulse > div{padding:2rem}
+.pulse > div + div{border-left:1px solid var(--line)}
+.pulse h3{margin-bottom:1.25rem}
+.big-rating{display:flex;align-items:baseline;gap:.6rem;margin-bottom:1rem}
+.big-rating b{font-family:var(--display);font-size:3.6rem;font-weight:800;line-height:1}
+.big-rating span{color:var(--muted)}
+.dist-row{display:grid;grid-template-columns:2.2rem 1fr 2.2rem;align-items:center;gap:.6rem;font-size:.9rem;margin-top:.45rem}
+.track{height:10px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.track i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--amber),var(--coral));width:0;transition:width .6s ease}
+.dist-row em{font-style:normal;color:var(--muted);text-align:right}
+.stack{display:flex;height:18px;border-radius:99px;overflow:hidden;background:var(--surface-2);margin-bottom:1.1rem}
+.stack i{display:block;height:100%;transition:flex-grow .6s ease}
+.keys{display:grid;gap:.45rem;font-size:.92rem}
+.keys div{display:flex;align-items:center;gap:.55rem}
+.keys i{width:12px;height:12px;border-radius:4px;flex:none}
+.keys em{margin-left:auto;font-style:normal;color:var(--muted)}
+.use-row{margin-top:.6rem;font-size:.92rem}
+.use-row .lbl{display:flex;justify-content:space-between;margin-bottom:.25rem}
+.use-row .lbl em{font-style:normal;color:var(--muted)}
+.use-row .track i{background:linear-gradient(90deg,var(--cyan),var(--violet))}
+.empty-note{color:var(--muted);font-size:.95rem}
+@media (max-width:900px){.pulse{grid-template-columns:1fr}.pulse > div + div{border-left:0;border-top:1px solid var(--line)}}
+
+/* wall */
+.spot{position:relative;border-radius:var(--r-lg);padding:clamp(1.75rem,4vw,3rem);margin-bottom:2rem;color:#fff;background:linear-gradient(125deg,var(--violet),var(--magenta) 55%,var(--coral));overflow:hidden}
+.spot::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;border:2px solid rgba(255,255,255,.25);box-shadow:0 0 0 40px rgba(255,255,255,.06),0 0 0 90px rgba(255,255,255,.04)}
+.spot blockquote{margin:0;position:relative;z-index:1;font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,2.8vw,2.2rem);line-height:1.2;max-width:46rem;letter-spacing:-0.015em}
+.spot .who{position:relative;z-index:1;display:flex;align-items:center;gap:.8rem;margin-top:1.5rem}
+.spot .who small{color:#fff;opacity:.85}
+.spot-nav{position:absolute;right:1.25rem;bottom:1.25rem;z-index:2;display:flex;gap:.4rem}
+.spot-nav button{width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);background:rgba(255,255,255,.12);color:#fff;cursor:pointer;font-size:1.1rem}
+.spot-nav button:hover{background:rgba(255,255,255,.25)}
+.controls{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:1.5rem}
+.search{flex:1 1 240px;position:relative}
+.search input[type=text]{width:100%;padding:.8rem 1rem .8rem 2.7rem;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--text);font:inherit}
+.search svg{position:absolute;left:.95rem;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--muted)}
+select{padding:.8rem 2.2rem .8rem 1rem;border-radius:999px;border:1.5px solid var(--line);background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='2' fill='none'/%3E%3C/svg%3E") no-repeat right 1rem center;color:var(--text);font:inherit;appearance:none}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{appearance:none;border:1.5px solid var(--line);background:var(--surface);color:var(--text);font:600 .9rem/1 var(--body);padding:.6rem .95rem;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"],.chip[aria-checked="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+.chip i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.filter-chips{margin-bottom:1.75rem}
+.masonry{columns:3 300px;column-gap:1.25rem}
+.card{break-inside:avoid;margin-bottom:1.25rem;background:var(--surface);border-radius:var(--r-md);padding:1.4rem 1.4rem 1.2rem;border:1px solid var(--line);position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--c,var(--violet))}
+.card.flash{animation:flash 1.6s ease}
+@keyframes flash{0%,40%{box-shadow:0 0 0 4px var(--c)}100%{box-shadow:0 0 0 0 transparent}}
+.stars{color:var(--star);letter-spacing:2px;font-size:1rem}
+.stars .off{color:var(--line)}
+.card h3{font-size:1.15rem;margin:.5rem 0 .4rem}
+.card .txt{color:var(--text);white-space:pre-line}
+.card .txt.clamp{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+.more{appearance:none;background:none;border:0;color:var(--violet);font:700 .9rem var(--body);padding:.3rem 0;cursor:pointer}
+.tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.8rem}
+.tag{font-size:.78rem;padding:.25rem .6rem;border-radius:999px;background:var(--surface-2);color:var(--muted)}
+.who{display:flex;align-items:center;gap:.7rem;margin-top:1.1rem}
+.av{width:42px;height:42px;border-radius:50%;flex:none;display:grid;place-items:center;font:800 .95rem var(--display);color:#fff;background:var(--c,var(--violet))}
+.who b{display:block;font-size:.98rem;line-height:1.25}
+.who small{display:block;color:var(--muted);font-size:.85rem;line-height:1.3}
+.card .date{position:absolute;right:1.1rem;top:1.25rem;font-size:.8rem;color:var(--muted)}
+.wall-empty{border:2px dashed var(--line);border-radius:var(--r-lg);padding:3rem 2rem;text-align:center;color:var(--muted)}
+.wall-empty h3{color:var(--text);margin-bottom:.5rem}
+.wall-empty .btn{margin-top:1.25rem}
+.count-line{color:var(--muted);font-size:.95rem;margin-bottom:1rem}
+
+/* form */
+.share{background:var(--surface-2)}
+.share-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:2.5rem;align-items:start}
+@media (max-width:960px){.share-grid{grid-template-columns:1fr}}
+.panel{background:var(--surface);border-radius:var(--r-lg);padding:clamp(1.5rem,3.5vw,2.5rem);border:1px solid var(--line)}
+.steps{display:flex;gap:.5rem;margin-bottom:1.75rem}
+.steps button{flex:1;appearance:none;border:0;background:none;padding:0;cursor:pointer;text-align:left;color:var(--muted);font:600 .88rem var(--body)}
+.steps button span{display:block;height:6px;border-radius:99px;background:var(--line);margin-bottom:.5rem;transition:background .3s}
+.steps button.done span,.steps button.now span{background:linear-gradient(90deg,var(--violet),var(--magenta))}
+.steps button.now{color:var(--text)}
+.step{display:none}
+.step.on{display:block}
+.field{margin-bottom:1.3rem}
+.field > label,.field > .label{display:block;font-weight:700;margin-bottom:.45rem}
+.field .hint{font-size:.88rem;color:var(--muted);margin-top:.35rem}
+.field .req{color:var(--magenta)}
+input[type=text],input[type=email],textarea{width:100%;padding:.85rem 1rem;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--bg);color:var(--text);font:inherit}
+input:focus,textarea:focus,select:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 30%,transparent)}
+textarea{min-height:150px;resize:vertical;line-height:1.5}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:560px){.two{grid-template-columns:1fr}}
+.err{color:var(--coral);font-size:.88rem;margin-top:.35rem;display:none}
+.field.bad .err{display:block}
+.field.bad input,.field.bad textarea{border-color:var(--coral)}
+.rate{display:flex;gap:.25rem}
+.rate button{appearance:none;border:0;background:none;cursor:pointer;font-size:2.1rem;line-height:1;padding:.1rem;color:var(--line);transition:transform .12s,color .12s}
+.rate button.lit{color:var(--star)}
+.rate button:hover{transform:scale(1.15)}
+.rate-label{margin-left:.6rem;align-self:center;color:var(--muted);font-size:.95rem}
+.counter{float:right;font-weight:400;color:var(--muted);font-size:.85rem}
+.check{display:flex;gap:.75rem;align-items:flex-start;padding:.9rem 1rem;border-radius:var(--r-sm);background:var(--bg);border:1.5px solid var(--line);margin-bottom:.75rem;cursor:pointer}
+.check input{width:20px;height:20px;margin-top:.15rem;accent-color:var(--violet);flex:none}
+.check small{display:block;color:var(--muted)}
+.form-nav{display:flex;justify-content:space-between;gap:.75rem;margin-top:1.75rem}
+.form-nav .btn-plain{visibility:hidden}
+.form-nav .btn-plain.on{visibility:visible}
+.hp{position:absolute;left:-9999px}
+.preview-wrap{position:sticky;top:90px}
+.preview-wrap h3{margin-bottom:1rem}
+.preview-wrap .card{margin:0}
+.privacy{margin-top:1.25rem;font-size:.92rem;color:var(--muted);display:flex;gap:.6rem}
+.privacy svg{flex:none;width:20px;height:20px;color:var(--lime);margin-top:.15rem}
+.notice{border-radius:var(--r-md);padding:1rem 1.2rem;margin-bottom:1.5rem;font-size:.95rem;background:color-mix(in srgb,var(--amber) 16%,var(--surface));border:1px solid color-mix(in srgb,var(--amber) 45%,transparent)}
+.notice.info{background:color-mix(in srgb,var(--cyan) 12%,var(--surface));border-color:color-mix(in srgb,var(--cyan) 40%,transparent)}
+.done-state{text-align:center;padding:2rem 0}
+.done-state .burst{width:90px;height:90px;margin:0 auto 1rem}
+.done-state h3{font-size:1.8rem;margin-bottom:.6rem}
+.done-state p{color:var(--muted);max-width:28rem;margin:0 auto}
+.done-state .cta-row{justify-content:center}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+@media (max-width:900px){.about-grid{grid-template-columns:1fr}}
+.about-grid p{color:var(--muted);margin-bottom:1rem;max-width:36rem}
+.flow{list-style:none;padding:0;margin:0;display:grid;gap:.9rem;counter-reset:s}
+.flow li{counter-increment:s;display:grid;grid-template-columns:3rem 1fr;gap:1rem;align-items:start;background:var(--surface);border:1px solid var(--line);padding:1.1rem 1.2rem;border-radius:var(--r-md)}
+.flow li::before{content:counter(s);width:3rem;height:3rem;border-radius:50%;display:grid;place-items:center;font:800 1.3rem var(--display);color:#fff;background:var(--sc)}
+.flow b{display:block;font-family:var(--display);font-size:1.1rem}
+.flow span{color:var(--muted);font-size:.95rem}
+.cite{margin-top:1.5rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:1.1rem 1.2rem;font-size:.92rem;position:relative}
+.cite p{color:var(--text);margin:0;padding-right:4.5rem}
+.cite button{position:absolute;right:.8rem;top:.8rem;padding:.5rem .8rem;font-size:.85rem}
+.link-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+
+/* owner */
+.owner{background:var(--surface);border-top:4px solid var(--violet)}
+.owner[hidden]{display:none}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-md);background:var(--bg)}
+table{border-collapse:collapse;width:100%;min-width:960px;font-size:.92rem}
+th,td{text-align:left;padding:.75rem .9rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:700;background:var(--surface-2);position:sticky;top:0}
+td .mini{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;padding:.35rem .7rem;font:600 .8rem var(--body);cursor:pointer}
+td .mini:hover{border-color:var(--coral);color:var(--coral)}
+.badge{display:inline-block;padding:.15rem .55rem;border-radius:999px;font-size:.78rem;font-weight:700}
+.badge.y{background:color-mix(in srgb,var(--lime) 22%,transparent);color:var(--text)}
+.badge.n{background:var(--surface-2);color:var(--muted)}
+.owner-stats{display:flex;flex-wrap:wrap;gap:1rem 2.5rem;margin-bottom:1.5rem}
+.owner-stats b{font:800 1.8rem var(--display);display:block}
+.owner-stats span{color:var(--muted);font-size:.9rem}
+.owner-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1.25rem}
+
+
+
+.mini-h{font-size:1.05rem;margin:1.4rem 0 .5rem}
+.tbl-scroll{overflow-x:auto}
+.heat{border-collapse:separate;border-spacing:3px;font-size:.78rem;min-width:0;width:auto}
+.heat th{border:0;vertical-align:middle;background:none;padding:.2rem .35rem;font-weight:700;color:var(--muted);position:static;text-align:center}
+.heat th[scope=row]{text-align:left;white-space:nowrap;color:var(--text)}
+.heat .hn{display:inline-block;width:1.4rem;color:var(--muted)}
+.heat td{vertical-align:middle;width:2.6rem;height:2.1rem;text-align:center;border-radius:6px;padding:0;border:0;font-variant-numeric:tabular-nums;color:var(--text)}
+.heat td{width:3rem}
+.heat td.pos{background:color-mix(in srgb,#3FAA45 var(--v),var(--surface-2))}
+.heat td.neg{background:color-mix(in srgb,#E5484D var(--v),var(--surface-2))}
+.heat td.known{box-shadow:inset 0 0 0 2.5px var(--text)}
+.heat td.diag{background:var(--line)}
+/* seminar */
+.seminar{background:linear-gradient(180deg,var(--bg),color-mix(in srgb,var(--cyan) 10%,var(--bg)))}
+.sem-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:start}
+@media (max-width:960px){.sem-grid{grid-template-columns:1fr}}
+.sem-form fieldset{border:0;padding:0;margin:0 0 1.75rem}
+.sem-form legend{font-family:var(--display);font-weight:700;font-size:1.25rem;margin-bottom:1rem;padding:0}
+.scale{display:flex;gap:.35rem;flex-wrap:wrap;align-items:center}
+.scale button{appearance:none;width:2.7rem;height:2.7rem;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--text);font:700 1rem var(--body);cursor:pointer}
+.scale button[aria-checked="true"]{background:var(--cyan);border-color:var(--cyan);color:#fff}
+.scale small{color:var(--muted);font-size:.82rem;margin:0 .35rem}
+.sem-side{position:sticky;top:90px}
+.sem-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;margin-bottom:1.5rem}
+.sem-stats div{background:var(--surface);padding:1.1rem}
+.sem-stats b{display:block;font:800 1.9rem/1 var(--display)}
+.sem-stats span{color:var(--muted);font-size:.88rem}
+.intent{margin-bottom:1.5rem}
+.intent .stack{margin-bottom:.8rem}
+.quote{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:1.1rem 1.2rem;margin-bottom:.9rem;position:relative}
+.quote p{font-size:1rem}
+.quote .meta{margin-top:.6rem;font-size:.85rem;color:var(--muted)}
+.quote .evt{display:inline-block;font-size:.75rem;font-weight:700;padding:.2rem .55rem;border-radius:999px;background:color-mix(in srgb,var(--cyan) 18%,transparent);margin-bottom:.5rem}
+.inbox-h{margin:3rem 0 1rem;font-size:1.5rem}
+/* domains */
+.domains{background:var(--surface)}
+.dom-tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.75rem}
+.dom-tabs .chip[aria-selected="true"]{background:var(--dc);border-color:var(--dc);color:#fff}
+.dom-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:2rem;align-items:start}
+@media (max-width:960px){.dom-grid{grid-template-columns:1fr}}
+.dom-fig{margin:0;background:radial-gradient(500px 300px at 70% 50%,var(--ink-2),var(--ink));border-radius:var(--r-lg);padding:1rem;color:var(--on-ink)}
+.dom-fig svg{display:block;width:100%;height:auto}
+.dom-fig figcaption{padding:.25rem .75rem .5rem;color:var(--on-ink-muted);font-size:.95rem}
+.dom-legend{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;padding:.25rem .75rem .75rem;font-size:.82rem;color:var(--on-ink-muted)}
+.dom-legend i{display:inline-block;width:22px;height:0;vertical-align:middle;margin-right:.45rem;border-top:2px dashed rgba(255,255,255,.45)}
+.dom-legend i.lg-pos{border-top:4px solid #6ED46A}
+.dom-legend i.lg-neg{border-top:4px solid #FF6B6B}
+.dom-legend i.lg-known{border-top:3px solid #F2F3FF}
+.dom-legend i.lg-new{border-top:3px dashed #F2F3FF}
+.dom-legend i.lg-prior{border-top:2px dotted rgba(255,255,255,.5)}
+.dom-legend i.dot{width:12px;height:12px;border:0;border-radius:50%;vertical-align:-1px}
+.dom-legend i.dot.up{background:#FFBE3D}.dom-legend i.dot.down{background:#5AA9FF}
+.sgn{display:inline-grid;place-items:center;width:1.15rem;height:1.15rem;border-radius:50%;font-weight:800;font-size:.8rem;line-height:1;color:#14163A}
+.sgn.up{background:#FFBE3D}.sgn.down{background:#5AA9FF}
+.track.dv{position:relative;overflow:visible}
+.track.dv::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--muted);opacity:.5}
+.track.dv i{position:absolute;top:0;height:100%;border-radius:99px}
+.dom-legend i.lg-effect{border-top:4px solid var(--dc)}
+.dom-facts{margin:0 0 1.5rem;display:grid;gap:.9rem}
+.dom-facts div{padding-left:1rem;border-left:4px solid var(--dc,var(--violet))}
+.dom-facts dt{font-weight:700;font-size:.9rem;color:var(--muted)}
+.dom-facts dd{margin:0;font-size:1.02rem}
+.dom-facts .q dd{font-family:var(--display);font-weight:700;font-size:1.2rem;line-height:1.25}
+.knobs{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:1.25rem}
+.knob-note{font-size:.88rem;color:var(--muted);margin:.35rem 0 1rem}
+.knob{display:block;font-weight:700;margin-top:.75rem}
+.knob span{display:flex;justify-content:space-between}
+.knob output{font-weight:400;color:var(--muted)}
+.knob input{width:100%;accent-color:var(--violet);margin-top:.35rem}
+.knob-help{font-size:.85rem;color:var(--muted)}
+.coef{margin-top:1rem;display:grid;gap:.35rem}
+.coef div{display:grid;grid-template-columns:7.5rem 1fr 2.6rem;gap:.5rem;align-items:center;font-size:.85rem}
+.coef .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.coef .track i{background:linear-gradient(90deg,var(--magenta),var(--coral))}
+.coef em{font-style:normal;color:var(--muted);text-align:right}
+.coef .zero .nm{color:var(--muted);text-decoration:line-through}
+/* model */
+.model-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:1.5rem;align-items:stretch}
+@media (max-width:960px){.model-grid{grid-template-columns:1fr}}
+.eq-card{background:var(--ink);color:var(--on-ink);border-radius:var(--r-lg);padding:clamp(1.5rem,3vw,2.25rem)}
+.eq{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;margin:1.25rem 0 1.5rem;font-family:var(--display);font-weight:700;font-size:1.05rem}
+.eq b{color:var(--on-ink-muted)}
+.eq .t{padding:.5rem .8rem;border-radius:10px}
+.eq .t1{background:color-mix(in srgb,#3CCBE6 25%,transparent);box-shadow:inset 0 0 0 1.5px #3CCBE6}
+.eq .t2{background:color-mix(in srgb,#9C85FF 25%,transparent);box-shadow:inset 0 0 0 1.5px #9C85FF}
+.eq .t3{background:color-mix(in srgb,#FF62A8 25%,transparent);box-shadow:inset 0 0 0 1.5px #FF62A8}
+.eq-list{list-style:none;padding:0;margin:0;display:grid;gap:.7rem}
+.eq-list li{display:flex;gap:.7rem;color:var(--on-ink-muted);font-size:.97rem}
+.eq-list li b{color:var(--on-ink)}
+.eq-list i{width:10px;height:10px;border-radius:50%;flex:none;margin-top:.5rem}
+.fine{margin-top:1.1rem;font-size:.82rem;color:var(--on-ink-muted)}
+.io{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(1.25rem,3vw,2rem)}
+.io-arrow{width:40px;color:var(--violet)}
+@media (max-width:640px){.io{grid-template-columns:1fr}.io-arrow{transform:rotate(90deg);margin:0 auto}}
+.io ul{margin:.75rem 0 0;padding-left:1.1rem;display:grid;gap:.6rem;font-size:.97rem}
+.io li::marker{color:var(--violet)}
+.fit-title{margin:3rem 0 1.25rem;font-size:1.5rem}
+.fit{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+@media (max-width:960px){.fit{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.fit{grid-template-columns:1fr}}
+.fit div{padding-top:1rem;border-top:3px solid var(--text)}
+.fit svg{width:44px;height:44px;color:var(--text);display:block;margin-bottom:.6rem}
+.fit b{display:block;font-family:var(--display);font-size:1.12rem;margin-bottom:.3rem}
+.fit span{color:var(--muted);font-size:.95rem}
+/* faq */
+.faq-sec{background:var(--surface)}
+.faq-wrap{display:grid;grid-template-columns:1fr 2fr;gap:2rem}
+@media (max-width:860px){.faq-wrap{grid-template-columns:1fr}}
+.faq details{border-bottom:1px solid var(--line);padding:1rem 0}
+.faq summary{cursor:pointer;font-weight:700;font-size:1.08rem;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:800 1.4rem/1 var(--display);color:var(--violet);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin-top:.6rem;color:var(--muted);max-width:42rem}
+.tag.field{background:color-mix(in srgb,var(--violet) 18%,transparent);color:var(--text);font-weight:700}
+footer{background:var(--ink);color:var(--on-ink-muted);padding-block:2.5rem;font-size:.92rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center}
+footer a{color:var(--on-ink)}
+.mode-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .8rem;border-radius:999px;background:rgba(255,255,255,.08);color:var(--on-ink)}
+.mode-pill i{width:8px;height:8px;border-radius:50%;background:var(--amber)}
+.mode-pill.live i{background:var(--lime)}
+
+.toast{position:fixed;left:50%;bottom:calc(1.5rem + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--text);color:var(--bg);padding:.85rem 1.3rem;border-radius:999px;font-weight:700;opacity:0;transition:.25s;z-index:60;pointer-events:none;max-width:calc(100% - 2rem)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:55;width:100%;height:100%}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="NetREm Voices home">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <line x1="8" y1="9" x2="22" y2="7" stroke="#9C85FF" stroke-width="2"/>
+        <line x1="8" y1="9" x2="16" y2="23" stroke="#FF62A8" stroke-width="2"/>
+        <line x1="22" y1="7" x2="16" y2="23" stroke="#3CCBE6" stroke-width="2"/>
+        <line x1="16" y1="23" x2="26" y2="25" stroke="#FFBE3D" stroke-width="2"/>
+        <circle cx="8" cy="9" r="4" fill="#FF62A8"/><circle cx="22" cy="7" r="3.5" fill="#9C85FF"/>
+        <circle cx="16" cy="23" r="4.5" fill="#3CCBE6"/><circle cx="26" cy="25" r="3" fill="#FFBE3D"/>
+      </svg>
+      NetREm Voices
+    </a>
+    <nav aria-label="Sections">
+      <a href="#pulse">Community pulse</a>
+      <a href="#wall">Testimonials</a>
+      <a href="#seminar">Seminar feedback</a>
+      <a href="#about">About NetREm</a>
+      <a href="#domains">Any domain</a>
+      <a href="#faq">FAQ</a>
+      <a href="#inbox" id="navInbox" hidden>Team inbox</a>
+      <a class="pill" href="#share">Share yours</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero" style="padding:0" aria-labelledby="heroTitle">
+    <div class="hero-graph" id="graphBox">
+      <canvas id="graph" aria-label="Network of NetREm community members connected to the ways they use NetREm" role="img"></canvas>
+      <div class="tip" id="tip" role="status" aria-live="polite"></div>
+    </div>
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1 id="heroTitle"><span class="row">Every voice</span><span class="row">is a node</span><span class="row stroke">in the network.</span></h1>
+        <p class="lede">NetREm finds which predictors work together to shape an outcome. It was built to reveal transcription factor coordination in single cells, and it works in any field where predictors interact in a network. This page maps how the people using it connect. Tell us what NetREm did for your thesis, your lab, or your class, and your story joins the graph.</p>
+        <div class="cta-row">
+          <a class="btn btn-hot" href="#share">Share your experience</a>
+          <a class="btn btn-ghost" href="#wall">Read testimonials</a>
+          <a class="btn btn-ghost" href="#seminar">Attended a talk? Give feedback</a>
+        </div>
+        <div class="hero-stats" id="heroStats" aria-live="polite"></div>
+        <div class="legend-dots" id="heroLegend"></div>
+      </div>
+    </div>
+    <p class="hero-hint">Hover a coloured node to read a voice</p>
+  </section>
+
+  <!-- PULSE -->
+  <section id="pulse" aria-labelledby="pulseTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="pulseTitle">Community pulse</h2>
+        <p>Updated live as students and researchers add their experiences.</p>
+      </div>
+      <div class="pulse">
+        <div>
+          <h3>How people rate NetREm</h3>
+          <div id="ratingBox"></div>
+        </div>
+        <div>
+          <h3>Who's here</h3>
+          <div id="roleBox"></div>
+        </div>
+        <div>
+          <h3>What they use it for</h3>
+          <div id="useBox"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WALL -->
+  <section id="wall" aria-labelledby="wallTitle" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="wallTitle">Testimonials</h2>
+        <p>In their own words: how NetREm fits into real research and coursework.</p>
+      </div>
+      <div id="spot"></div>
+      <div class="controls">
+        <label class="search">
+          <span class="sr">Search testimonials</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          <input type="text" id="q" placeholder="Search names, fields, institutions, words">
+        </label>
+        <label><span class="sr">Filter by role</span>
+          <select id="roleFilter"><option value="">Everyone</option></select>
+        </label>
+        <label><span class="sr">Sort</span>
+          <select id="sort">
+            <option value="new">Newest first</option>
+            <option value="top">Highest rated</option>
+            <option value="long">Most detailed</option>
+          </select>
+        </label>
+      </div>
+      <div class="chips filter-chips" id="useFilter" role="group" aria-label="Filter by use"></div>
+      <p class="count-line" id="countLine" aria-live="polite"></p>
+      <div class="masonry" id="cards"></div>
+    </div>
+  </section>
+
+  <!-- SHARE -->
+  <section class="share" id="share" aria-labelledby="shareTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="shareTitle">Share your experience</h2>
+        <p>Please tell us how you used NetREm. It takes three short steps. Your email stays private with the NetREm team; everything else can appear on the wall if you choose.</p>
+      </div>
+      <div class="share-grid">
+        <div class="panel" id="formPanel">
+          <div id="formNotice"></div>
+          <form id="form" novalidate>
+            <div class="steps" id="stepBar">
+              <button type="button" data-go="0" class="now"><span></span>About you</button>
+              <button type="button" data-go="1"><span></span>Your experience</button>
+              <button type="button" data-go="2"><span></span>Review and post</button>
+            </div>
+
+            <div class="step on" data-step="0">
+              <div class="two">
+                <div class="field" data-f="name">
+                  <label for="fName">Name <span class="req">*</span></label>
+                  <input type="text" id="fName" autocomplete="name" maxlength="60" placeholder="e.g. Priya Raman">
+                  <p class="err">Please add your name so readers know who's speaking.</p>
+                </div>
+                <div class="field" data-f="email">
+                  <label for="fEmail">Email <span class="req">*</span></label>
+                  <input type="email" id="fEmail" autocomplete="email" maxlength="120" placeholder="you@university.edu">
+                  <p class="err">Please enter a valid email, like name@school.edu.</p>
+                </div>
+              </div>
+              <div class="field" data-f="role">
+                <span class="label" id="roleLbl">I am a <span class="req">*</span></span>
+                <div class="chips" id="roleChips" role="radiogroup" aria-labelledby="roleLbl"></div>
+                <p class="err">Please pick the role that fits you best.</p>
+              </div>
+              <div class="field">
+                <label for="fInst">Institution or company</label>
+                <input type="text" id="fInst" autocomplete="organization" maxlength="90" placeholder="e.g. University of Wisconsin–Madison">
+              </div>
+              <div class="field">
+                <label for="fField">Field or domain</label>
+                <input type="text" id="fField" maxlength="60" placeholder="e.g. Neuroscience, ecology, finance, genomics">
+                <p class="hint">NetREm works beyond biology too, so please tell others where you applied it.</p>
+              </div>
+              <label class="check"><input type="checkbox" id="fShowInst" checked><span>Show my institution on my testimonial<small>Uncheck to show only your name and role.</small></span></label>
+              <input type="text" class="hp" id="fWebsite" tabindex="-1" autocomplete="off" aria-hidden="true">
+            </div>
+
+            <div class="step" data-step="1">
+              <div class="field" data-f="rating">
+                <span class="label" id="rateLbl">Your rating <span class="req">*</span></span>
+                <div style="display:flex">
+                  <div class="rate" id="rate" role="radiogroup" aria-labelledby="rateLbl"></div>
+                  <span class="rate-label" id="rateText">Tap a star</span>
+                </div>
+                <p class="err">Please choose a rating from 1 to 5 stars.</p>
+              </div>
+              <div class="field">
+                <label for="fHead">Headline <span class="counter" id="headCount">0 / 80</span></label>
+                <input type="text" id="fHead" maxlength="80" placeholder="e.g. Found the TF pairs my thesis was missing">
+              </div>
+              <div class="field" data-f="text">
+                <label for="fText">Your testimonial <span class="req">*</span> <span class="counter" id="textCount">0 / 700</span></label>
+                <textarea id="fText" maxlength="700" placeholder="Please describe what you were trying to do, how NetREm helped, and what you discovered."></textarea>
+                <p class="err">Please write at least 20 characters so others can learn from your experience.</p>
+              </div>
+              <div class="field">
+                <span class="label" id="useLbl">I used NetREm for</span>
+                <div class="chips" id="useChips" role="group" aria-labelledby="useLbl"></div>
+                <p class="hint">Please pick any that apply. These connect your node to the matching hubs in the network.</p>
+              </div>
+              <div class="field">
+                <label for="fSuggest">Suggestions for the NetREm team <small style="font-weight:400;color:var(--muted)">(private)</small></label>
+                <textarea id="fSuggest" maxlength="1000" style="min-height:90px" placeholder="Please share bugs, feature ideas, or docs that confused you. Only the team sees this."></textarea>
+              </div>
+            </div>
+
+            <div class="step" data-step="2">
+              <label class="check"><input type="checkbox" id="fPublic" checked><span>Post my testimonial on the public wall<small>Uncheck to send it privately to the NetREm team instead.</small></span></label>
+              <label class="check"><input type="checkbox" id="fUpdates"><span>Email me about NetREm updates, workshops, and releases<small>Occasional, and you can opt out any time.</small></span></label>
+              <div class="field" data-f="agree">
+                <label class="check"><input type="checkbox" id="fAgree"><span>I wrote this myself and it reflects my real experience <span class="req">*</span></span></label>
+                <p class="err">Please confirm this before posting.</p>
+              </div>
+              <p class="privacy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>Your email is never shown on this page. Only the NetREm team can see it, and we use it only to follow up about NetREm.</span></p>
+            </div>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn-plain" id="back">Back</button>
+              <button type="button" class="btn btn-hot" id="next">Continue</button>
+            </div>
+          </form>
+          <div id="doneState" hidden></div>
+        </div>
+
+        <aside class="preview-wrap" aria-label="Live preview">
+          <h3>Your card, live</h3>
+          <div id="preview"></div>
+          <p class="privacy" style="margin-top:1rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span>This is exactly what others will see. Your email isn't on it.</span></p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SEMINAR FEEDBACK -->
+  <section class="seminar" id="seminar" aria-labelledby="semTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="semTitle">Heard about NetREm in a course or seminar?</h2>
+        <p>You don't need to have used the tool yet. Please tell us what you learned, what clicked, and what didn't, so the next talk is even better.</p>
+      </div>
+      <div class="sem-grid">
+        <div class="panel sem-form">
+          <div id="semNotice"></div>
+          <form id="semForm" novalidate>
+            <fieldset>
+              <legend>About you</legend>
+              <div class="two">
+                <div class="field" data-s="name"><label for="sName">Name <span class="req">*</span></label>
+                  <input type="text" id="sName" autocomplete="name" maxlength="60" placeholder="e.g. Jordan Lee">
+                  <p class="err">Please add your name.</p></div>
+                <div class="field" data-s="email"><label for="sEmail">Email <span class="req">*</span></label>
+                  <input type="email" id="sEmail" autocomplete="email" maxlength="120" placeholder="you@university.edu">
+                  <p class="err">Please enter a valid email, like name@school.edu.</p></div>
+              </div>
+              <div class="field" data-s="role"><span class="label" id="sRoleLbl">I am a <span class="req">*</span></span>
+                <div class="chips" id="sRoleChips" role="radiogroup" aria-labelledby="sRoleLbl"></div>
+                <p class="err">Please pick the role that fits you best.</p></div>
+              <div class="two">
+                <div class="field"><label for="sInst">Institution or company</label><input type="text" id="sInst" maxlength="90" placeholder="e.g. UW–Madison"></div>
+                <div class="field"><label for="sField">Your field</label><input type="text" id="sField" maxlength="60" placeholder="e.g. Neuroscience, statistics"></div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>The session</legend>
+              <div class="field" data-s="event"><span class="label" id="sEvtLbl">Where did you hear about NetREm? <span class="req">*</span></span>
+                <div class="chips" id="sEvtChips" role="radiogroup" aria-labelledby="sEvtLbl"></div>
+                <p class="err">Please choose the type of session.</p></div>
+              <div class="two">
+                <div class="field"><label for="sEventName">Course or event name</label><input type="text" id="sEventName" maxlength="90" placeholder="e.g. BMI 826 guest lecture"></div>
+                <div class="field"><label for="sDate">Date attended</label><input type="text" id="sDate" maxlength="30" placeholder="e.g. March 2026"></div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Your ratings</legend>
+              <div class="field" data-s="overall"><span class="label" id="sOverallLbl">Overall, how was the session? <span class="req">*</span></span>
+                <div style="display:flex"><div class="rate" id="sRate" role="radiogroup" aria-labelledby="sOverallLbl"></div><span class="rate-label" id="sRateText">Please tap a star</span></div>
+                <p class="err">Please choose an overall rating from 1 to 5 stars.</p></div>
+              <div class="field" data-s="clarity"><span class="label" id="sClarLbl">How clear was the explanation of NetREm? <span class="req">*</span></span>
+                <div class="scale" id="sClarity" role="radiogroup" aria-labelledby="sClarLbl"></div>
+                <p class="err">Please choose a clarity score.</p></div>
+              <div class="field" data-s="relevance"><span class="label" id="sRelLbl">How relevant is NetREm to your own work? <span class="req">*</span></span>
+                <div class="scale" id="sRelevance" role="radiogroup" aria-labelledby="sRelLbl"></div>
+                <p class="err">Please choose a relevance score.</p></div>
+            </fieldset>
+            <fieldset>
+              <legend>What you took away</legend>
+              <div class="field" data-s="learned"><label for="sLearned">What was the most valuable thing you learned? <span class="req">*</span> <span class="counter" id="sLearnedCount">0 / 600</span></label>
+                <textarea id="sLearned" maxlength="600" style="min-height:110px" placeholder="Please share an idea, a result, or a way of thinking that stuck with you."></textarea>
+                <p class="err">Please write at least 15 characters.</p></div>
+              <div class="field"><label for="sUnclear">What was unclear, or could be explained better?</label>
+                <textarea id="sUnclear" maxlength="600" style="min-height:90px" placeholder="Please be candid. This helps us improve the next session."></textarea></div>
+              <div class="field" data-s="intent"><span class="label" id="sIntentLbl">Will you try NetREm? <span class="req">*</span></span>
+                <div class="chips" id="sIntentChips" role="radiogroup" aria-labelledby="sIntentLbl"></div>
+                <p class="err">Please choose one option.</p></div>
+              <div class="field"><label for="sApply">Where might you apply it?</label>
+                <input type="text" id="sApply" maxlength="120" placeholder="e.g. Brain connectivity and behavior, supply-chain risk, my thesis data"></div>
+              <div class="field"><span class="label" id="sMoreLbl">Please pick topics you'd like to hear more about</span>
+                <div class="chips" id="sMoreChips" role="group" aria-labelledby="sMoreLbl"></div></div>
+              <div class="field"><label for="sQuestions">Questions for the NetREm team <small style="font-weight:400;color:var(--muted)">(private)</small></label>
+                <textarea id="sQuestions" maxlength="1000" style="min-height:80px" placeholder="Please ask anything. We'll reply by email."></textarea></div>
+            </fieldset>
+            <fieldset>
+              <legend>Sharing</legend>
+              <label class="check"><input type="checkbox" id="sShare" checked><span>Please feature my "most valuable thing I learned" answer on this page<small>Only that answer is shown, along with your role and the session type.</small></span></label>
+              <label class="check"><input type="checkbox" id="sAnon"><span>Show it anonymously<small>Your name is replaced with "A session attendee".</small></span></label>
+              <label class="check"><input type="checkbox" id="sUpdates"><span>Please email me about NetREm tutorials, workshops, and releases</span></label>
+              <div class="field" data-s="agree"><label class="check"><input type="checkbox" id="sAgree"><span>This feedback is honest and my own <span class="req">*</span></span></label>
+                <p class="err">Please confirm this before sending.</p></div>
+              <input type="text" class="hp" id="sWebsite" tabindex="-1" autocomplete="off" aria-hidden="true">
+            </fieldset>
+            <button type="button" class="btn btn-hot" id="sSubmit">Send feedback</button>
+            <p class="privacy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>Your email and private questions go only to the NetREm team. Ratings are shown on this page only as anonymous totals.</span></p>
+          </form>
+          <div id="semDone" hidden></div>
+        </div>
+        <aside class="sem-side" aria-labelledby="semRoomTitle">
+          <h3 id="semRoomTitle" style="margin-bottom:1rem;font-size:1.5rem">From the seminar room</h3>
+          <div class="sem-stats" id="semStats"></div>
+          <div class="intent" id="semIntent"></div>
+          <div id="semQuotes"></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" aria-labelledby="aboutTitle">
+    <div class="wrap about-grid">
+      <div>
+        <h2 id="aboutTitle" style="margin-bottom:1.25rem">About NetREm</h2>
+        <p>NetREm (Network Regression Embeddings) is an open-source computational framework for finding which transcription factors work together to regulate target genes in a specific cell type.</p>
+        <p>It combines single-cell gene expression with prior knowledge of protein–protein interactions among TFs, using network-constrained regularization to produce embeddings that quantify TF–TF coordination. It has been applied to immune cell sub-types, neuronal and glial cells, Schwann cells, and Alzheimer's disease.</p>
+        <p>Under the hood, NetREm is a general-purpose method: it suits any problem where predictors form subnetworks that jointly influence an outcome. <a href="#domains">See it in other fields.</a></p>
+        <div class="link-row">
+          <a class="btn btn-dark" href="https://github.com/SaniyaKhullar/NetREm" target="_blank" rel="noopener">View on GitHub</a>
+          <a class="btn btn-plain" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12011367/" target="_blank" rel="noopener">Read the paper</a>
+        </div>
+        <div class="cite">
+          <p id="citeText">Khullar S, Huang X, Ramesh R, Svaren J, Wang D. NetREm: Network Regression Embeddings reveal cell-type transcription factor coordination for gene regulation. bioRxiv 2023.10.25.563769. doi:10.1101/2023.10.25.563769</p>
+          <button class="btn btn-plain" id="copyCite" type="button">Copy</button>
+        </div>
+      </div>
+      <ol class="flow" aria-label="How NetREm works">
+        <li style="--sc:var(--magenta)"><div><b>Start with expression</b><span>Single-cell gene expression for one cell type: candidate TFs and a target gene.</span></div></li>
+        <li style="--sc:var(--violet)"><div><b>Add the interaction prior</b><span>A protein–protein interaction network among TFs guides the regression.</span></div></li>
+        <li style="--sc:var(--cyan)"><div><b>Regularized regression</b><span>Network and sparsity hyperparameters select the TFs that matter for each gene.</span></div></li>
+        <li style="--sc:var(--amber)"><div><b>Read the embeddings</b><span>Embeddings reveal which TFs coordinate, producing TF–TG and TF–TF networks.</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+
+  <!-- DOMAINS -->
+  <section class="domains" id="domains" aria-labelledby="domTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="domTitle">Built for any network of predictors</h2>
+        <p>Gene regulation is where NetREm started, not where it stops. Whenever many predictors are connected to each other and together drive one outcome, NetREm can find which ones matter and which ones work as a team.</p>
+      </div>
+      <div class="dom-tabs" id="domTabs" role="tablist" aria-label="Choose a field"></div>
+      <div class="dom-grid">
+        <figure class="dom-fig">
+          <svg id="domSvg" viewBox="0 0 680 420" role="img" aria-labelledby="domCap"></svg>
+          <figcaption id="domCap"></figcaption>
+          <div class="dom-legend">
+            <span><i class="lg-pos"></i>Positive coordination (same direction)</span>
+            <span><i class="lg-neg"></i>Negative coordination (opposite directions)</span>
+            <span><i class="lg-known"></i>Solid: link known in the prior</span>
+            <span><i class="lg-new"></i>Dashed: new link not in the prior</span>
+            <span><i class="lg-prior"></i>Prior link to a dropped predictor</span>
+            <span><i class="dot up"></i><span id="lgUp">Raises y</span></span>
+            <span><i class="dot down"></i><span id="lgDown">Lowers y</span></span>
+            <span>Thicker, brighter lines mean larger |score|.</span>
+          </div>
+        </figure>
+        <div class="dom-side">
+          <dl class="dom-facts" id="domFacts"></dl>
+          <div class="knobs">
+            <h3>Try the two dials</h3>
+            <p class="knob-note">A simplified illustration of what NetREm's two hyperparameters do. It isn't the real model fit.</p>
+            <label class="knob"><span>Network strength β <output id="betaOut">0.5</output></span>
+              <input type="range" id="beta" min="0" max="1" step="0.05" value="0.5"></label>
+            <p class="knob-help">Higher β lets linked predictors share strength, so teams of connected predictors rise together.</p>
+            <label class="knob"><span>Sparsity α <output id="alphaOut">0.35</output></span>
+              <input type="range" id="alpha" min="0" max="0.9" step="0.05" value="0.35"></label>
+            <p class="knob-help">Higher α keeps only the strongest predictors and sets the rest to zero.</p>
+            <h3 class="mini-h">Selected predictors</h3>
+            <div id="coefBars" class="coef" aria-live="polite"></div>
+            <h3 class="mini-h">Coordination scores</h3>
+            <p class="knob-help">Every pair of selected predictors gets a score from −100 to +100, so the final network is fully connected. Positive (green) means both predictors push the outcome the same way: two activators or two repressors. Negative (red) means they push opposite ways: one activator and one repressor. Outlined cells were links in your prior network; the rest are newly inferred.</p>
+            <div class="tbl-scroll"><table class="heat" id="heat"></table></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODEL -->
+  <section id="model" aria-labelledby="modelTitle" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="modelTitle">The model at a glance</h2>
+        <p>Same recipe in every field: an outcome, its predictors, and what's already known about how those predictors connect.</p>
+      </div>
+      <div class="model-grid">
+        <div class="eq-card">
+          <h3>What NetREm balances</h3>
+          <div class="eq" aria-label="Fit error plus beta times network penalty plus alpha times sparsity penalty">
+            <span class="t t1">fit to the outcome</span><b>+</b><span class="t t2">β × network penalty</span><b>+</b><span class="t t3">α × sparsity penalty</span>
+          </div>
+          <ul class="eq-list">
+            <li><i style="background:var(--cyan)"></i><span><b>Fit.</b> How well a weighted combination of predictors explains the outcome y.</span></li>
+            <li><i style="background:var(--violet)"></i><span><b>Network penalty.</b> Uses your prior network so that predictors known to interact are treated as related, not as strangers.</span></li>
+            <li><i style="background:var(--magenta)"></i><span><b>Sparsity penalty.</b> A lasso-style term that drops predictors with little effect, keeping results interpretable.</span></li>
+          </ul>
+          <p class="fine">Schematic form. See the paper for NetREm's exact formulation and how the embeddings are built.</p>
+        </div>
+        <div class="io">
+          <div class="io-col">
+            <h3>You bring</h3>
+            <ul>
+              <li><b>An outcome</b> measured across samples (a target gene's expression, a test score, a crop yield).</li>
+              <li><b>Predictors</b> measured on the same samples, often many more predictors than samples.</li>
+              <li><b>A prior network</b> listing which predictors are known or expected to interact, optionally weighted.</li>
+            </ul>
+          </div>
+          <div class="io-arrow" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M8 20h22M22 11l9 9-9 9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="io-col">
+            <h3>NetREm returns</h3>
+            <ul>
+              <li><b>Selected predictors</b> with signed coefficients: which ones drive the outcome, and whether each raises it (activator, +) or lowers it (repressor, −).</li>
+              <li><b>Network regression embeddings</b> that place predictors in a shared space.</li>
+              <li><b>Coordination scores</b> from −100 to +100 for every pair of selected predictors. Positive when both push the outcome the same way (two activators or two repressors), negative when they push opposite ways (an activator and a repressor). The result is a fully connected network: some links confirm your prior, others are new discoveries.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <h3 class="fit-title">NetREm is a good fit when</h3>
+      <div class="fit">
+        <div><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="12" cy="14" r="5" fill="var(--magenta)"/><circle cx="34" cy="10" r="5" fill="var(--violet)"/><circle cx="24" cy="34" r="5" fill="var(--cyan)"/><path d="M12 14L34 10 24 34Z" fill="none" stroke="currentColor" stroke-width="2"/></svg><b>Predictors are connected</b><span>You have a graph of relationships among them: interactions, wiring, adjacency, supply chains, friendships.</span></div>
+        <div><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="10" width="36" height="28" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 30l8-8 6 5 12-12" fill="none" stroke="var(--amber)" stroke-width="3" stroke-linecap="round"/></svg><b>One outcome at a time</b><span>A continuous response you want to explain, modeled one target at a time and repeatable across many targets.</span></div>
+        <div><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="var(--lime)"><rect x="6" y="8" width="4" height="32"/><rect x="14" y="8" width="4" height="32"/><rect x="22" y="8" width="4" height="32"/><rect x="30" y="8" width="4" height="32"/><rect x="38" y="8" width="4" height="32"/></g></svg><b>Many predictors, few samples</b><span>High-dimensional data where plain regression overfits and correlated predictors fight each other.</span></div>
+        <div><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="18" cy="24" r="10" fill="none" stroke="var(--magenta)" stroke-width="3"/><circle cx="30" cy="24" r="10" fill="none" stroke="var(--cyan)" stroke-width="3"/></svg><b>Teamwork matters</b><span>You care not just which predictors matter, but which ones act together to move the outcome.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" aria-labelledby="faqTitle" class="faq-sec">
+    <div class="wrap faq-wrap">
+      <h2 id="faqTitle">Questions</h2>
+      <div class="faq">
+        <details><summary>Do I have to work in biology to use NetREm or leave a testimonial?</summary><p>No. NetREm is general purpose: any field where predictors interact in a network and jointly affect an outcome can use it. If you applied it in neuroscience, ecology, finance, engineering, or anywhere else, we especially want to hear from you. Pick "Beyond biology" and add your field in the form.</p></details>
+        <details><summary>I only heard a talk and haven't used NetREm. Can I still give feedback?</summary><p>Yes, please do. The <a href="#seminar">seminar feedback form</a> is made for exactly that: tell us what you learned, what was unclear, and whether you might try it.</p></details>
+        <details><summary>Is my email shown publicly?</summary><p>Never. Your email goes only to the NetREm team. The public card shows your name, role, optional institution and field, rating, and testimonial.</p></details>
+        <details><summary>Can I send feedback without posting it publicly?</summary><p>Yes. In the last step, uncheck "Post my testimonial on the public wall". Your message and any suggestions then go privately to the team.</p></details>
+        <details><summary>Can I edit what I posted?</summary><p>On the live community board, opening the form again loads your submission and saving updates your existing card. If you need something removed, contact the NetREm team.</p></details>
+        <details><summary>I'm a student new to this. Where do I start with NetREm?</summary><p>Start with the GitHub repository's README and the paper's overview figure, then try the dials above to build intuition for β and α. If something in the docs confused you, tell us in the private suggestions box.</p></details>
+        <details><summary>How should I cite NetREm?</summary><p>Use the citation in the About section, which has a copy button, or the published paper linked there.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- OWNER INBOX -->
+  <section class="owner" id="inbox" hidden aria-labelledby="inboxTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="inboxTitle">Team inbox</h2>
+        <p id="inboxNote">Only you can see this section. Names, emails, private suggestions, and seminar feedback from everyone who submitted.</p>
+      </div>
+      <div class="owner-stats" id="ownerStats"></div>
+      <div class="owner-actions">
+        <button class="btn btn-dark" type="button" id="exportCsv">Export CSV</button>
+        <button class="btn btn-plain" type="button" id="copyEmails">Copy update-list emails</button>
+      </div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Institution</th><th>Rating</th><th>On wall</th><th>Updates</th><th>Private suggestions</th><th>Submitted</th><th></th></tr></thead>
+        <tbody id="inboxRows"></tbody>
+      </table></div>
+      <h3 class="inbox-h">Seminar and course feedback</h3>
+      <div class="owner-stats" id="semOwnerStats"></div>
+      <div class="owner-actions">
+        <button class="btn btn-dark" type="button" id="exportSemCsv">Export seminar CSV</button>
+      </div>
+      <div class="tbl-wrap"><table style="min-width:1900px">
+        <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Session</th><th>Overall</th><th>Clarity</th><th>Relevance</th><th>Will try</th><th>Most valuable</th><th>Unclear</th><th>Apply to</th><th>Wants more on</th><th>Questions</th><th>Featured</th><th>Updates</th><th>Submitted</th><th></th></tr></thead>
+        <tbody id="semRows"></tbody>
+      </table></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>NetREm Voices. Built for the NetREm community.</span>
+    <span class="mode-pill" id="modePill"><i></i><span>Connecting</span></span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script>
+/* =========================================================
+   CONFIG: for self-hosting (GitHub Pages etc.), paste your
+   Google Apps Script web-app URL here. See the setup guide.
+   On claude.ai this is ignored: the built-in database is used.
+   ========================================================= */
+const CONFIG = {
+  SHEETS_ENDPOINT: "https://script.google.com/macros/s/AKfycbwHd8IjOnFg4Fz-IMfzC2R0GpFN0Hhpu9Jeol0t50aeCEJQhiJmNGMEQfWHybUkmDZ3sQ/exec"
+};
+
+const ROLES = [
+  {k:"undergrad", label:"Undergraduate", c:"--amber"},
+  {k:"grad", label:"Graduate student", c:"--magenta"},
+  {k:"postdoc", label:"Postdoc", c:"--violet"},
+  {k:"faculty", label:"Faculty or PI", c:"--cyan"},
+  {k:"industry", label:"Industry scientist", c:"--lime"},
+  {k:"other", label:"Other", c:"--coral"}
+];
+const USES = [
+  {k:"grn", label:"Gene regulatory networks"},
+  {k:"sc", label:"Single-cell analysis"},
+  {k:"tftf", label:"TF–TF coordination"},
+  {k:"disease", label:"Disease and genetics"},
+  {k:"teach", label:"Teaching and coursework"},
+  {k:"methods", label:"Methods development"},
+  {k:"beyond", label:"Beyond biology"}
+];
+const RATE_WORDS = ["", "Needs work", "Okay", "Good", "Great", "Outstanding"];
+const roleOf = k => ROLES.find(r => r.k === k) || ROLES[5];
+const useOf = k => USES.find(u => u.k === k);
+const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function initials(n){ const p = String(n||"?").trim().split(/\s+/); return ((p[0]||"?")[0] + (p.length>1 ? p[p.length-1][0] : "")).toUpperCase(); }
+function fmtDate(t){ if(!t) return ""; try { return new Date(t).toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"}); } catch(e){ return ""; } }
+function hash(s){ let h = 2166136261; for (const ch of String(s)) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); } return (h>>>0); }
+function toast(msg){ const t = $("#toast"); t.textContent = msg; t.classList.add("on"); clearTimeout(toast._t); toast._t = setTimeout(()=>t.classList.remove("on"), 3200); }
+
+/* ---------------- state ---------------- */
+const S = {
+  mode: "connecting",          // claude | sheets | demo | readonly
+  items: [],                   // public testimonials
+  contacts: [],                // owner-only private records
+  seminar: [],                 // public seminar entries (ratings for all, quote only when consented)
+  semPrivate: [],              // owner-only seminar records
+  isOwner: false, canWrite: true, uid: null, mine: null,
+  justAdded: null,
+  filters: { q:"", role:"", uses:new Set(), sort:"new" },
+  spot: 0
+};
+let db = null, downloads = null;
+
+/* ---------------- storage adapter ---------------- */
+const Store = {
+  async init(){
+    if (window.claude && typeof window.claude.use === "function") {
+      let user = null;
+      try { [db, user, downloads] = await Promise.all([claude.use("db"), claude.use("user"), claude.use("downloads")]); } catch(e) { db = null; }
+      if (!db) { S.mode = "readonly"; S.canWrite = false; return; }
+      S.mode = "claude";
+      if (user) {
+        S.uid = await user.id();
+        S.isOwner = await user.isOwner();
+        const cw = await user.can("data.write");
+        S.canWrite = !!S.uid && cw !== false;
+      } else { S.canWrite = false; }
+      db.collection("testimonials").onSnapshot(snap => {
+        S.items = snap.docs.filter(d => d.exists).map(d => ({ id:d.id, ...d.data() }));
+        renderAll();
+      }, () => {});
+      const flat = snap => snap.docs.filter(d => d.exists).flatMap(d => ((d.data().entries) || []).map(e => ({ ...e, uid:d.id })));
+      db.collection("seminar").onSnapshot(snap => { S.seminar = flat(snap); renderSeminar(); renderInbox(); }, () => {});
+      if (S.isOwner) db.collection("seminarPrivate").onSnapshot(snap => { S.semPrivate = flat(snap); renderInbox(); }, () => {});
+      if (S.isOwner) {
+        db.collection("contacts").onSnapshot(snap => {
+          S.contacts = snap.docs.filter(d => d.exists).map(d => ({ id:d.id, ...d.data() }));
+          renderInbox();
+        }, () => {});
+      }
+      if (S.uid) {
+        try {
+          const c = await db.doc("contacts/" + S.uid).get();
+          const t = await db.doc("testimonials/" + S.uid).get();
+          if (c.exists || t.exists) { S.mine = { ...(t.exists ? t.data() : {}), ...(c.exists ? c.data() : {}) }; prefill(S.mine); }
+        } catch(e) {}
+      }
+    } else if (CONFIG.SHEETS_ENDPOINT) {
+      S.mode = "sheets";
+      await Store.refreshSheets();
+    } else {
+      S.mode = "demo"; S.isOwner = true;
+      const d = Store.demoLoad(); S.items = d.items; S.contacts = d.contacts; S.seminar = d.seminar || []; S.semPrivate = d.semPrivate || [];
+    }
+  },
+  async refreshSheets(){
+    try {
+      const r = await fetch(CONFIG.SHEETS_ENDPOINT + "?action=list", { method:"GET" });
+      const j = await r.json();
+      S.items = Array.isArray(j.items) ? j.items : [];
+      S.seminar = Array.isArray(j.seminar) ? j.seminar : [];
+    } catch(e) { toast("Couldn't load testimonials from the sheet. Check the endpoint URL."); }
+  },
+  demoLoad(){ try { return JSON.parse(localStorage.getItem("netrem-voices-demo")) || {items:[],contacts:[],seminar:[],semPrivate:[]}; } catch(e){ return {items:[],contacts:[],seminar:[],semPrivate:[]}; } },
+  demoSave(){ try { localStorage.setItem("netrem-voices-demo", JSON.stringify({items:S.items, contacts:S.contacts, seminar:S.seminar, semPrivate:S.semPrivate})); } catch(e){} },
+
+  async submit(pub, priv){
+    const now = Date.now();
+    if (S.mode === "claude") {
+      const id = S.uid;
+      const created = (S.mine && S.mine.createdAt) || now;
+      await db.doc("contacts/" + id).set({ ...pub, ...priv, createdAt: created, updatedAt: now });
+      if (priv.public) await db.doc("testimonials/" + id).set({ ...pub, createdAt: created, updatedAt: now });
+      else await db.doc("testimonials/" + id).delete();
+      S.mine = { ...pub, ...priv, createdAt: created };
+      return id;
+    }
+    if (S.mode === "sheets") {
+      const id = "s" + now.toString(36) + Math.random().toString(36).slice(2,7);
+      const r = await fetch(CONFIG.SHEETS_ENDPOINT, { method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"},
+        body: JSON.stringify({ action:"submit", id, ...pub, ...priv, website: $("#fWebsite").value }) });
+      const j = await r.json().catch(() => ({ok:false}));
+      if (!j.ok) throw new Error(j.error || "submit_failed");
+      await Store.refreshSheets();
+      return id;
+    }
+    if (S.mode === "demo") {
+      const id = "d" + now.toString(36);
+      S.contacts.push({ id, ...pub, ...priv, createdAt: now });
+      if (priv.public) S.items.push({ id, ...pub, createdAt: now });
+      Store.demoSave(); return id;
+    }
+    throw new Error("readonly");
+  },
+  async submitSeminar(pub, priv){
+    const now = Date.now(), id = "e" + now.toString(36) + Math.random().toString(36).slice(2,6);
+    const pubE = { id, ...pub, createdAt: now }, privE = { id, ...pub, ...priv, createdAt: now };
+    if (S.mode === "claude") {
+      const pr = db.doc("seminarPrivate/" + S.uid), pu = db.doc("seminar/" + S.uid);
+      const a = await pr.get(); await pr.set({ entries: [ ...((a.exists && a.data().entries) || []), privE ].slice(-40) });
+      const b = await pu.get(); await pu.set({ entries: [ ...((b.exists && b.data().entries) || []), pubE ].slice(-40) });
+      return id;
+    }
+    if (S.mode === "sheets") {
+      const r = await fetch(CONFIG.SHEETS_ENDPOINT, { method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"},
+        body: JSON.stringify({ action:"seminar", id, ...pub, ...priv, website: $("#sWebsite").value }) });
+      const j = await r.json().catch(() => ({ok:false}));
+      if (!j.ok) throw new Error(j.error || "submit_failed");
+      await Store.refreshSheets(); return id;
+    }
+    if (S.mode === "demo") { S.seminar.push({ ...pubE, uid:"demo" }); S.semPrivate.push({ ...privE, uid:"demo" }); Store.demoSave(); return id; }
+    throw new Error("readonly");
+  },
+  async hideQuote(uid, id){
+    const strip = e => e.id === id ? { ...e, quote:"", name:"" } : e;
+    if (S.mode === "claude") { const ref = db.doc("seminar/" + uid), g = await ref.get(); if (g.exists) await ref.set({ entries: (g.data().entries || []).map(strip) }); }
+    if (S.mode === "demo") { S.seminar = S.seminar.map(strip); Store.demoSave(); renderSeminar(); renderInbox(); }
+  },
+  async hide(id){
+    if (S.mode === "claude") { await db.doc("testimonials/" + id).delete(); }
+    if (S.mode === "demo") { S.items = S.items.filter(i => i.id !== id); Store.demoSave(); renderAll(); }
+  }
+};
+
+/* ---------------- network graph ---------------- */
+const G = { nodes:[], edges:[], map:new Map(), pulses:[], alpha:1, w:0, h:0, dpr:1, hover:null, mouse:null, t:0 };
+const TFS = ["SOX10","EGR2","POU3F1","YY1","JUN","SP1","CTCF","STAT3","RUNX1","SPI1","GATA1","TCF7","NR2F2","MEF2C","OLIG2","CEBPB","IRF8","KLF4","FOS","NFKB1"];
+const TF_LINKS = [["SOX10","EGR2"],["EGR2","POU3F1"],["JUN","FOS"],["SPI1","IRF8"],["SPI1","CEBPB"],["RUNX1","GATA1"],["YY1","CTCF"],["SP1","KLF4"],["STAT3","NFKB1"],["OLIG2","SOX10"],["MEF2C","TCF7"]];
+const canvas = $("#graph"), ctx = canvas.getContext("2d");
+
+function graphCenter(){ return { x: G.w > 900 ? G.w * 0.7 : G.w * 0.5, y: G.h * 0.5 }; }
+function spread(){ return { x: G.w > 900 ? G.w*0.26 : G.w*0.44, y: G.h*0.4 }; }
+function hubAnchor(i){ const c = graphCenter(), sp = spread(), a = -Math.PI/2 + i * Math.PI*2/USES.length; return { x: c.x + Math.cos(a)*sp.x*0.72, y: c.y + Math.sin(a)*sp.y*0.72 }; }
+function upsertNode(id, props){
+  let n = G.map.get(id);
+  if (!n) {
+    const c = graphCenter(), h = hash(id), a = (h % 628) / 100, r = 40 + (h % 160);
+    n = { id, x: c.x + Math.cos(a)*r, y: c.y + Math.sin(a)*r, vx:0, vy:0 };
+    G.map.set(id, n);
+  }
+  Object.assign(n, props); return n;
+}
+function buildGraph(){
+  const keep = new Set(); const edges = [];
+  USES.forEach((u,i) => { keep.add("hub:"+u.k); const n = upsertNode("hub:"+u.k, { kind:"hub", label:u.label, r:13, m:5, hi:i }); if (n.x0 === undefined){ const A = hubAnchor(i); n.x = A.x; n.y = A.y; n.x0 = 1; } });
+  TFS.forEach(tf => {
+    const id = "tf:"+tf; keep.add(id); upsertNode(id, { kind:"tf", label:tf, r:3.5, m:1 });
+    const h = hash(tf); edges.push({ a:id, b:"hub:"+USES[h % USES.length].k, kind:"tf" });
+    if (h % 3 === 0) edges.push({ a:id, b:"hub:"+USES[(h>>>3) % USES.length].k, kind:"tf" });
+  });
+  TF_LINKS.forEach(([a,b]) => edges.push({ a:"tf:"+a, b:"tf:"+b, kind:"tftf" }));
+  S.items.forEach(it => {
+    const id = "v:"+it.id; keep.add(id);
+    upsertNode(id, { kind:"voice", label: it.name, item: it, r: 6 + (Number(it.rating)||3) * 0.9, m:1.4, color: cssVar(roleOf(it.role).c) });
+    const uses = (it.uses && it.uses.length) ? it.uses : [USES[hash(it.id) % USES.length].k];
+    uses.forEach(u => useOf(u) && edges.push({ a:id, b:"hub:"+u, kind:"voice" }));
+  });
+  for (const id of [...G.map.keys()]) if (!keep.has(id)) G.map.delete(id);
+  G.nodes = [...G.map.values()];
+  G.edges = edges.map(e => ({ ...e, A:G.map.get(e.a), B:G.map.get(e.b) })).filter(e => e.A && e.B);
+  G.alpha = 1;
+  if (reduceMotion) { for (let i=0;i<350;i++) step(); draw(); }
+}
+function step(){
+  const N = G.nodes, c = graphCenter(), a = G.alpha;
+  for (let i=0;i<N.length;i++){
+    const p = N[i];
+    for (let j=i+1;j<N.length;j++){
+      const q = N[j]; let dx = p.x-q.x, dy = p.y-q.y; let d2 = dx*dx+dy*dy; if (d2 < 1) { dx = Math.random()-.5; dy = Math.random()-.5; d2 = 1; }
+      if (d2 > 90000) continue;
+      const base = (p.kind==="hub" && q.kind==="hub") ? 9000 : 900;
+      const f = base / d2 * a, d = Math.sqrt(d2);
+      p.vx += dx/d*f/p.m; p.vy += dy/d*f/p.m; q.vx -= dx/d*f/q.m; q.vy -= dy/d*f/q.m;
+    }
+  }
+  for (const e of G.edges){
+    const len = e.kind==="voice" ? 70 : e.kind==="tftf" ? 34 : 95;
+    const dx = e.B.x-e.A.x, dy = e.B.y-e.A.y, d = Math.sqrt(dx*dx+dy*dy)||1, f = (d-len)*0.018*a;
+    e.A.vx += dx/d*f/e.A.m; e.A.vy += dy/d*f/e.A.m; e.B.vx -= dx/d*f/e.B.m; e.B.vy -= dy/d*f/e.B.m;
+  }
+  const sp = spread(), spreadX = sp.x, spreadY = sp.y;
+  for (const p of N){
+    if (p.kind === "hub"){ const A = hubAnchor(p.hi); p.vx += (A.x-p.x)*0.05; p.vy += (A.y-p.y)*0.05; }
+    else { p.vx += (c.x-p.x)*0.0012*a; p.vy += (c.y-p.y)*0.0016*a; }
+    if (G.mouse && !reduceMotion){ const dx = p.x-G.mouse.x, dy = p.y-G.mouse.y, d2 = dx*dx+dy*dy; if (d2 < 6400 && d2 > 1){ const f = 40/d2; p.vx += dx*f; p.vy += dy*f; } }
+    p.vx *= 0.82; p.vy *= 0.82; p.x += p.vx; p.y += p.vy;
+    p.x = Math.max(c.x-spreadX, Math.min(c.x+spreadX, p.x)); p.y = Math.max(c.y-spreadY, Math.min(c.y+spreadY, p.y));
+  }
+  G.alpha = Math.max(0.06, G.alpha*0.993);
+}
+function draw(){
+  const W = G.w, H = G.h; ctx.setTransform(G.dpr,0,0,G.dpr,0,0); ctx.clearRect(0,0,W,H);
+  const hov = G.hover;
+  for (const e of G.edges){
+    const lit = hov && (e.A===hov || e.B===hov);
+    ctx.strokeStyle = lit ? "rgba(255,255,255,.7)" : e.kind==="voice" ? "rgba(255,255,255,.16)" : e.kind==="tftf" ? "rgba(156,133,255,.35)" : "rgba(255,255,255,.07)";
+    ctx.lineWidth = lit ? 2 : e.kind==="tftf" ? 1.4 : 1;
+    ctx.beginPath(); ctx.moveTo(e.A.x,e.A.y); ctx.lineTo(e.B.x,e.B.y); ctx.stroke();
+  }
+  for (const p of G.pulses){
+    const x = p.e.A.x + (p.e.B.x-p.e.A.x)*p.t, y = p.e.A.y + (p.e.B.y-p.e.A.y)*p.t;
+    ctx.fillStyle = p.c; ctx.globalAlpha = Math.sin(p.t*Math.PI); ctx.beginPath(); ctx.arc(x,y,2.4,0,7); ctx.fill(); ctx.globalAlpha = 1;
+  }
+  ctx.textAlign = "center"; ctx.textBaseline = "middle";
+  for (const p of G.nodes){
+    if (p.kind === "tf"){
+      ctx.fillStyle = "rgba(255,255,255,.55)"; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,7); ctx.fill();
+      ctx.font = "600 10px 'Atkinson Hyperlegible', system-ui, sans-serif"; ctx.fillStyle = "rgba(220,224,255,.42)"; ctx.fillText(p.label, p.x, p.y-10);
+    }
+  }
+  for (const p of G.nodes){
+    if (p.kind === "voice"){
+      const isNew = S.justAdded && p.id === "v:"+S.justAdded;
+      if (isNew && !reduceMotion){ const k = (G.t % 90)/90; ctx.strokeStyle = p.color; ctx.globalAlpha = 1-k; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(p.x,p.y,p.r+4+k*26,0,7); ctx.stroke(); ctx.globalAlpha = 1; }
+      ctx.shadowColor = p.color; ctx.shadowBlur = p===hov ? 26 : 14;
+      ctx.fillStyle = p.color; ctx.beginPath(); ctx.arc(p.x,p.y,p===hov ? p.r+3 : p.r,0,7); ctx.fill(); ctx.shadowBlur = 0;
+      ctx.strokeStyle = "rgba(255,255,255,.85)"; ctx.lineWidth = 1.5; ctx.stroke();
+    }
+  }
+  for (const p of G.nodes){
+    if (p.kind === "hub"){
+      ctx.fillStyle = "#14163A"; ctx.strokeStyle = p===hov ? "#fff" : "rgba(255,255,255,.75)"; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,7); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(p.x,p.y,4,0,7); ctx.fill();
+      ctx.font = "700 13px 'Bricolage Grotesque', system-ui, sans-serif";
+      const w = ctx.measureText(p.label).width + 16;
+      ctx.fillStyle = "rgba(20,22,58,.78)"; roundRect(p.x-w/2, p.y+p.r+5, w, 22, 11); ctx.fill();
+      ctx.fillStyle = "#F2F3FF"; ctx.fillText(p.label, p.x, p.y+p.r+16.5);
+    }
+  }
+}
+function roundRect(x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+function loop(){
+  G.t++; step();
+  if (G.t % 14 === 0 && G.edges.length){
+    const pool = G.edges.filter(e => e.kind !== "tf"); const e = (pool.length ? pool : G.edges)[Math.floor(Math.random()*(pool.length||G.edges.length))];
+    const pal = ["--magenta","--cyan","--amber","--lime","--violet","--coral"];
+    G.pulses.push({ e, t:0, c: e.A.color || cssVar(pal[G.t % pal.length]) });
+  }
+  G.pulses.forEach(p => p.t += 0.012); G.pulses = G.pulses.filter(p => p.t < 1);
+  draw(); requestAnimationFrame(loop);
+}
+function resizeGraph(){
+  const r = canvas.getBoundingClientRect(); G.dpr = Math.min(2, devicePixelRatio || 1);
+  const ow = G.w, oh = G.h; G.w = r.width; G.h = r.height;
+  canvas.width = Math.round(G.w*G.dpr); canvas.height = Math.round(G.h*G.dpr);
+  if (ow && (Math.abs(ow-G.w) > 40 || Math.abs(oh-G.h) > 40)) { const c = graphCenter(); G.nodes.forEach(n => { if (n.kind === "hub"){ const A = hubAnchor(n.hi); n.x = A.x; n.y = A.y; } else { n.x = c.x + (n.x - (ow>900?ow*.7:ow*.5)); n.y = c.y + (n.y - oh*.5); } }); G.alpha = 1; }
+  if (reduceMotion) { for (let i=0;i<120;i++) step(); draw(); }
+}
+function pick(x,y){
+  let best = null, bd = 400;
+  for (const p of G.nodes){ if (p.kind === "tf") continue; const d = (p.x-x)**2 + (p.y-y)**2, lim = (p.r+10)**2; if (d < lim && d < bd) { bd = d; best = p; } }
+  return best;
+}
+function showTip(p){
+  const tip = $("#tip");
+  if (!p){ tip.classList.remove("on"); return; }
+  if (p.kind === "voice"){
+    const it = p.item, r = roleOf(it.role);
+    const snippet = (it.headline || it.text || "").slice(0, 120) + ((it.headline || it.text || "").length > 120 ? "…" : "");
+    tip.innerHTML = `<b>${esc(it.name)}</b><small>${esc(r.label)}${it.institution ? ", " + esc(it.institution) : ""}</small><div style="margin-top:.4rem">${esc(snippet)}</div><small>Click to open their card</small>`;
+  } else {
+    const k = p.id.slice(4), n = S.items.filter(i => (i.uses||[]).includes(k)).length;
+    tip.innerHTML = `<b>${esc(p.label)}</b><small>${n ? n + (n === 1 ? " person uses" : " people use") + " NetREm for this" : "No voices here yet"}</small>`;
+  }
+  const box = $("#graphBox").getBoundingClientRect();
+  let left = p.x + 18, top = p.y - 20; if (left + 290 > box.width) left = p.x - 298; if (top < 10) top = 10; if (top > box.height - 120) top = box.height - 120;
+  tip.style.left = left + "px"; tip.style.top = top + "px"; tip.classList.add("on");
+}
+canvas.addEventListener("pointermove", ev => {
+  const r = canvas.getBoundingClientRect(), x = ev.clientX - r.left, y = ev.clientY - r.top;
+  G.mouse = { x, y }; const p = pick(x,y);
+  if (p !== G.hover){ G.hover = p; showTip(p); canvas.style.cursor = p && p.kind === "voice" ? "pointer" : "default"; if (reduceMotion) draw(); }
+});
+canvas.addEventListener("pointerleave", () => { G.mouse = null; G.hover = null; showTip(null); if (reduceMotion) draw(); });
+canvas.addEventListener("click", ev => {
+  const r = canvas.getBoundingClientRect(), p = pick(ev.clientX - r.left, ev.clientY - r.top);
+  if (p && p.kind === "voice") openCard(p.item.id);
+  else if (p && p.kind === "hub") { const k = p.id.slice(4); S.filters.uses = new Set([k]); renderFilters(); renderWall(); $("#wall").scrollIntoView(); }
+});
+
+/* ---------------- renderers ---------------- */
+function starStr(n){ n = Math.round(Number(n)||0); return "★".repeat(n) + `<span class="off">${"★".repeat(5-n)}</span>`; }
+function cardHTML(it, opts = {}){
+  const r = it.role ? roleOf(it.role) : { label:"", c:"--violet" }, long = (it.text||"").length > 330;
+  const sub = [r.label, it.institution].filter(Boolean).map(esc).join(", ");
+  return `<article class="card" id="card-${esc(it.id)}" style="--c:var(${r.c})">
+    ${it.createdAt ? `<span class="date">${esc(fmtDate(it.createdAt))}</span>` : ""}
+    <div class="stars" aria-label="${Number(it.rating)||0} out of 5 stars">${starStr(it.rating)}</div>
+    ${it.headline ? `<h3>${esc(it.headline)}</h3>` : `<div style="height:.5rem"></div>`}
+    <p class="txt ${long && !opts.full ? "clamp" : ""}">${esc(it.text || (opts.preview ? "Your testimonial will appear here as you type." : ""))}</p>
+    ${long && !opts.preview ? `<button class="more" type="button" aria-expanded="false">Read more</button>` : ""}
+    ${(it.uses||[]).length || it.field ? `<div class="tags">${it.field ? `<span class="tag field">${esc(it.field)}</span>` : ""}${(it.uses||[]).map(u => useOf(u) ? `<span class="tag">${esc(useOf(u).label)}</span>` : "").join("")}</div>` : ""}
+    <div class="who"><span class="av" aria-hidden="true">${esc(initials(it.name || "You"))}</span><div><b>${esc(it.name || "Your name")}</b><small>${sub || "Your role"}</small></div></div>
+  </article>`;
+}
+function renderHero(){
+  const n = S.items.length, avg = n ? (S.items.reduce((s,i) => s + (Number(i.rating)||0), 0) / n) : 0;
+  const inst = new Set(S.items.map(i => (i.institution||"").trim().toLowerCase()).filter(Boolean)).size;
+  $("#heroStats").innerHTML = n
+    ? `<div><b>${n}</b><span>${n === 1 ? "voice" : "voices"} so far</span></div><div><b>${avg.toFixed(1)}</b><span>average rating</span></div><div><b>${inst}</b><span>${inst === 1 ? "institution" : "institutions"}</span></div>`
+    : `<div><b>0 voices</b><span>The network is waiting for its first node. It could be yours.</span></div>`;
+  $("#heroLegend").innerHTML = ROLES.map(r => `<span><i style="background:var(${r.c})"></i>${r.label}</span>`).join("");
+}
+function renderPulse(){
+  const n = S.items.length;
+  if (!n){
+    const msg = `<p class="empty-note">Fills in once the first testimonials arrive.</p>`;
+    $("#ratingBox").innerHTML = `<div class="big-rating"><b>–</b><span>out of 5</span></div>` + [5,4,3,2,1].map(s => `<div class="dist-row"><span>${s}★</span><div class="track"><i></i></div><em>0</em></div>`).join("");
+    $("#roleBox").innerHTML = `<div class="stack"></div>` + msg; $("#useBox").innerHTML = msg; return;
+  }
+  const avg = S.items.reduce((s,i) => s + (Number(i.rating)||0), 0) / n;
+  const dist = [5,4,3,2,1].map(s => [s, S.items.filter(i => Math.round(i.rating) === s).length]);
+  $("#ratingBox").innerHTML = `<div class="big-rating"><b>${avg.toFixed(1)}</b><span>out of 5, from ${n} ${n===1?"review":"reviews"}</span></div>` +
+    dist.map(([s,c]) => `<div class="dist-row"><span>${s}★</span><div class="track"><i style="width:${c/n*100}%"></i></div><em>${c}</em></div>`).join("");
+  const rc = ROLES.map(r => [r, S.items.filter(i => roleOf(i.role).k === r.k).length]).filter(x => x[1]);
+  $("#roleBox").innerHTML = `<div class="stack" role="img" aria-label="Role breakdown">${rc.map(([r,c]) => `<i style="flex-grow:${c};background:var(${r.c})"></i>`).join("")}</div>
+    <div class="keys">${rc.map(([r,c]) => `<div><i style="background:var(${r.c})"></i>${r.label}<em>${Math.round(c/n*100)}%</em></div>`).join("")}</div>`;
+  const uc = USES.map(u => [u, S.items.filter(i => (i.uses||[]).includes(u.k)).length]).sort((a,b) => b[1]-a[1]);
+  const mx = Math.max(1, ...uc.map(x => x[1]));
+  $("#useBox").innerHTML = uc.map(([u,c]) => `<div class="use-row"><div class="lbl"><span>${u.label}</span><em>${c}</em></div><div class="track"><i style="width:${c/mx*100}%"></i></div></div>`).join("");
+}
+function spotPool(){ return S.items.filter(i => Number(i.rating) >= 4 && (i.text||"").length >= 60).sort((a,b) => (b.createdAt||0)-(a.createdAt||0)); }
+function renderSpot(){
+  const pool = spotPool(), box = $("#spot");
+  if (!pool.length){ box.innerHTML = ""; return; }
+  S.spot = ((S.spot % pool.length) + pool.length) % pool.length;
+  const it = pool[S.spot], r = roleOf(it.role);
+  const q = it.text.length > 260 ? it.text.slice(0, 257).trim() + "…" : it.text;
+  box.innerHTML = `<div class="spot" aria-live="polite"><blockquote>“${esc(q)}”</blockquote>
+    <div class="who"><span class="av" style="background:rgba(255,255,255,.22)">${esc(initials(it.name))}</span><div><b>${esc(it.name)}</b><small>${esc([r.label, it.institution].filter(Boolean).join(", "))}</small></div></div>
+    ${pool.length > 1 ? `<div class="spot-nav"><button type="button" data-d="-1" aria-label="Previous highlight">‹</button><button type="button" data-d="1" aria-label="Next highlight">›</button></div>` : ""}</div>`;
+}
+$("#spot").addEventListener("click", e => { const b = e.target.closest("button[data-d]"); if (b){ S.spot += Number(b.dataset.d); renderSpot(); } });
+
+function renderFilters(){
+  $("#useFilter").innerHTML = USES.map(u => `<button type="button" class="chip" data-u="${u.k}" aria-pressed="${S.filters.uses.has(u.k)}">${u.label}</button>`).join("") +
+    (S.filters.uses.size ? `<button type="button" class="chip" data-clear="1">Clear</button>` : "");
+}
+$("#useFilter").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.dataset.clear) S.filters.uses.clear(); else { const k = b.dataset.u; S.filters.uses.has(k) ? S.filters.uses.delete(k) : S.filters.uses.add(k); }
+  renderFilters(); renderWall();
+});
+$("#q").addEventListener("input", e => { S.filters.q = e.target.value.toLowerCase(); renderWall(); });
+$("#roleFilter").innerHTML += ROLES.map(r => `<option value="${r.k}">${r.label}</option>`).join("");
+$("#roleFilter").addEventListener("change", e => { S.filters.role = e.target.value; renderWall(); });
+$("#sort").addEventListener("change", e => { S.filters.sort = e.target.value; renderWall(); });
+
+function renderWall(){
+  const f = S.filters;
+  let list = S.items.filter(i => {
+    if (f.role && roleOf(i.role).k !== f.role) return false;
+    if (f.uses.size && ![...f.uses].some(u => (i.uses||[]).includes(u))) return false;
+    if (f.q && !`${i.name} ${i.institution} ${i.field||""} ${i.headline} ${i.text}`.toLowerCase().includes(f.q)) return false;
+    return true;
+  });
+  list.sort(f.sort === "top" ? (a,b) => (b.rating-a.rating) || ((b.createdAt||0)-(a.createdAt||0))
+          : f.sort === "long" ? (a,b) => (b.text||"").length - (a.text||"").length
+          : (a,b) => (b.createdAt||0) - (a.createdAt||0));
+  const total = S.items.length;
+  $("#countLine").textContent = total ? (list.length === total ? `Showing all ${total}` : `Showing ${list.length} of ${total}`) : "";
+  if (!total){
+    $("#cards").innerHTML = ""; $("#cards").style.columns = "auto";
+    $("#cards").innerHTML = `<div class="wall-empty"><h3>No testimonials yet</h3><p>Used NetREm in a project, paper, or class? Be the first voice on the wall.</p><a class="btn btn-hot" href="#share">Share your experience</a></div>`;
+    return;
+  }
+  $("#cards").style.columns = "";
+  $("#cards").innerHTML = list.length ? list.map(i => cardHTML(i)).join("") : `<div class="wall-empty" style="column-span:all"><h3>Nothing matches those filters</h3><p>Try clearing a filter or searching a different word.</p></div>`;
+}
+$("#cards").addEventListener("click", e => {
+  const b = e.target.closest(".more"); if (!b) return;
+  const t = b.previousElementSibling; const open = t.classList.toggle("clamp");
+  b.textContent = open ? "Read more" : "Show less"; b.setAttribute("aria-expanded", String(!open));
+});
+function openCard(id){
+  S.filters = { q:"", role:"", uses:new Set(), sort:S.filters.sort }; $("#q").value = ""; $("#roleFilter").value = "";
+  renderFilters(); renderWall();
+  const el = document.getElementById("card-" + id);
+  if (el){ el.scrollIntoView({ block:"center" }); el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash"); }
+}
+
+function renderInbox(){
+  const show = S.isOwner && (S.mode === "claude" || S.mode === "demo");
+  $("#inbox").hidden = !show; $("#navInbox").hidden = !show;
+  if (!show) return;
+  renderSemInbox();
+  if (S.mode === "demo") $("#inboxNote").textContent = "Demo mode: these records live only in this browser. Connect Google Sheets (see the setup guide) to collect real submissions.";
+  const C = [...S.contacts].sort((a,b) => (b.updatedAt||b.createdAt||0) - (a.updatedAt||a.createdAt||0));
+  const onWall = new Set(S.items.map(i => i.id));
+  $("#ownerStats").innerHTML = `<div><b>${C.length}</b><span>submissions</span></div><div><b>${C.filter(c => c.updates).length}</b><span>want updates</span></div><div><b>${C.filter(c => (c.suggestions||"").trim()).length}</b><span>left suggestions</span></div><div><b>${C.filter(c => !c.public).length}</b><span>private only</span></div>`;
+  $("#inboxRows").innerHTML = C.length ? C.map(c => `<tr>
+    <td><b>${esc(c.name)}</b></td><td><a href="mailto:${esc(c.email)}">${esc(c.email)}</a></td><td>${esc(roleOf(c.role).label)}</td>
+    <td>${esc(c.institution)}</td><td>${Number(c.rating)||""}★</td>
+    <td><span class="badge ${onWall.has(c.id) ? "y" : "n"}">${onWall.has(c.id) ? "Yes" : "No"}</span></td>
+    <td><span class="badge ${c.updates ? "y" : "n"}">${c.updates ? "Yes" : "No"}</span></td>
+    <td style="max-width:280px">${esc(c.suggestions)}</td><td>${esc(fmtDate(c.updatedAt || c.createdAt))}</td>
+    <td>${onWall.has(c.id) ? `<button class="mini" type="button" data-hide="${esc(c.id)}">Hide from wall</button>` : ""}</td></tr>`).join("")
+    : `<tr><td colspan="10" style="color:var(--muted)">No submissions yet. When someone shares, their details appear here.</td></tr>`;
+}
+function renderSemInbox(){
+  const C = [...S.semPrivate].sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
+  const featured = new Set(S.seminar.filter(e => e.quote).map(e => e.id));
+  const avg = k => C.length ? (C.reduce((t,e) => t + (Number(e[k])||0), 0) / C.length).toFixed(1) : "–";
+  $("#semOwnerStats").innerHTML = `<div><b>${C.length}</b><span>responses</span></div><div><b>${avg("overall")}</b><span>avg overall</span></div><div><b>${avg("clarity")}</b><span>avg clarity</span></div><div><b>${C.filter(e => (e.questions||"").trim()).length}</b><span>asked questions</span></div><div><b>${C.filter(e => e.updates).length}</b><span>want updates</span></div>`;
+  $("#semRows").innerHTML = C.length ? C.map(e => `<tr>
+    <td><b>${esc(e.realName || e.name)}</b></td><td><a href="mailto:${esc(e.email)}">${esc(e.email)}</a></td><td>${esc(roleOf(e.role).label)}</td>
+    <td>${esc(evtOf(e.eventType).label)}${e.eventName ? "<br><small>" + esc(e.eventName) + "</small>" : ""}${e.date ? "<br><small>" + esc(e.date) + "</small>" : ""}</td>
+    <td>${Number(e.overall)||""}★</td><td>${Number(e.clarity)||""}/5</td><td>${Number(e.relevance)||""}/5</td><td>${esc(intentOf(e.intent).label)}</td>
+    <td style="max-width:240px">${esc(e.learned)}</td><td style="max-width:220px">${esc(e.unclear)}</td><td>${esc(e.apply)}</td>
+    <td>${(e.more||[]).map(k => esc(moreOf(k).label)).join(", ")}</td><td style="max-width:220px">${esc(e.questions)}</td>
+    <td><span class="badge ${featured.has(e.id) ? "y" : "n"}">${featured.has(e.id) ? "Yes" : "No"}</span></td>
+    <td><span class="badge ${e.updates ? "y" : "n"}">${e.updates ? "Yes" : "No"}</span></td><td>${esc(fmtDate(e.createdAt))}</td>
+    <td>${featured.has(e.id) ? `<button class="mini" type="button" data-unfeature="${esc(e.uid)}|${esc(e.id)}">Unfeature</button>` : ""}</td></tr>`).join("")
+    : `<tr><td colspan="17" style="color:var(--muted)">No seminar feedback yet.</td></tr>`;
+}
+$("#semRows").addEventListener("click", async e => {
+  const b = e.target.closest("[data-unfeature]"); if (!b) return;
+  const [uid, id] = b.dataset.unfeature.split("|");
+  if (!confirm("Remove this quote from the public page? The full response stays in your inbox.")) return;
+  try { await Store.hideQuote(uid, id); toast("Quote removed from the page"); } catch(err){ toast("Couldn't remove it. Please try again."); }
+});
+$("#exportSemCsv").addEventListener("click", async () => {
+  if (!S.semPrivate.length) return toast("Nothing to export yet");
+  const cols = ["realName","email","role","institution","field","eventType","eventName","date","overall","clarity","relevance","intent","learned","unclear","apply","more","questions","share","anonymous","updates","createdAt"];
+  const q = v => `"${String(v ?? "").replace(/"/g,'""')}"`;
+  const data = [cols.join(","), ...S.semPrivate.map(e => cols.map(k => k === "more" ? q((e.more||[]).map(m => moreOf(m).label).join("; ")) : k === "role" ? q(roleOf(e.role).label) : k === "eventType" ? q(evtOf(e.eventType).label) : k === "intent" ? q(intentOf(e.intent).label) : k === "createdAt" ? q(e.createdAt ? new Date(e.createdAt).toISOString() : "") : q(e[k])).join(","))].join("\n");
+  await saveFile(`netrem-seminar-feedback-${new Date().toISOString().slice(0,10)}.csv`, data);
+});
+async function saveFile(filename, data){
+  if (downloads){ try { await downloads.save({ filename, data }); } catch(e){ if (e && e.code !== "declined") toast("Export isn't available here."); } return; }
+  try { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([data], {type:"text/csv"})); a.download = filename; a.click(); } catch(e){ toast("Export isn't available here."); }
+}
+$("#inboxRows").addEventListener("click", async e => {
+  const b = e.target.closest("[data-hide]"); if (!b) return;
+  if (!confirm("Hide this testimonial from the public wall? Their contact record stays in your inbox.")) return;
+  try { await Store.hide(b.dataset.hide); toast("Hidden from the wall"); } catch(err){ toast("Couldn't hide it. Try again."); }
+});
+function csv(){
+  const cols = ["name","email","role","institution","field","rating","headline","text","uses","public","updates","suggestions","createdAt"];
+  const q = v => `"${String(v ?? "").replace(/"/g,'""')}"`;
+  return [cols.join(","), ...S.contacts.map(c => cols.map(k => k === "uses" ? q((c.uses||[]).map(u => useOf(u)?.label).join("; ")) : k === "role" ? q(roleOf(c.role).label) : k === "createdAt" ? q(c.createdAt ? new Date(c.createdAt).toISOString() : "") : q(c[k])).join(","))].join("\n");
+}
+$("#exportCsv").addEventListener("click", async () => {
+  if (!S.contacts.length) return toast("Nothing to export yet");
+  const data = csv(), filename = `netrem-voices-${new Date().toISOString().slice(0,10)}.csv`;
+  if (downloads){ try { await downloads.save({ filename, data }); } catch(e){ if (e && e.code !== "declined") toast("Export isn't available here."); } return; }
+  try { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([data], {type:"text/csv"})); a.download = filename; a.click(); } catch(e){ toast("Export isn't available here."); }
+});
+$("#copyEmails").addEventListener("click", async () => {
+  const list = [...new Set([...S.contacts, ...S.semPrivate].filter(c => c.updates && c.email).map(c => c.email.toLowerCase()))].join(", ");
+  if (!list) return toast("No one has opted in to updates yet");
+  try { await navigator.clipboard.writeText(list); toast("Emails copied"); } catch(e){ prompt("Copy these emails:", list); }
+});
+$("#copyCite").addEventListener("click", async () => { try { await navigator.clipboard.writeText($("#citeText").textContent); toast("Citation copied"); } catch(e){ toast("Select the text to copy it"); } });
+
+function renderMode(){
+  const p = $("#modePill"), t = p.querySelector("span");
+  p.classList.toggle("live", S.mode === "claude" || S.mode === "sheets");
+  t.textContent = { claude:"Live community board", sheets:"Live, saving to Google Sheets", demo:"Demo mode: saved in this browser only", readonly:"Read-only view", connecting:"Connecting" }[S.mode];
+  const n = $("#formNotice");
+  if (S.mode === "demo") n.innerHTML = `<div class="notice">Demo mode. Submissions are saved only in this browser so you can try the flow. Please add your Google Sheets endpoint to collect them for real.</div>`;
+  else if (S.mode === "readonly" || (S.mode === "claude" && !S.canWrite)) n.innerHTML = `<div class="notice info">You can read testimonials here, but posting needs contributor access to this page. Please ask the NetREm team for an invite.</div>`;
+  else if (S.mode === "claude" && S.mine) n.innerHTML = `<div class="notice info">Welcome back. You've already shared, so saving here updates your existing card.</div>`;
+  else n.innerHTML = "";
+  $("#next").disabled = S.mode === "readonly" || (S.mode === "claude" && !S.canWrite);
+}
+function renderAll(){ buildGraph(); renderHero(); renderPulse(); renderSpot(); renderWall(); if (typeof renderSeminar === "function" && window.SEM_READY) renderSeminar(); renderInbox(); renderPreview(); }
+
+/* ---------------- form ---------------- */
+const F = { step:0, role:"", rating:0, uses:new Set() };
+$("#roleChips").innerHTML = ROLES.map(r => `<button type="button" class="chip" role="radio" aria-checked="false" data-r="${r.k}"><i style="background:var(${r.c})"></i>${r.label}</button>`).join("");
+$("#useChips").innerHTML = USES.map(u => `<button type="button" class="chip" aria-pressed="false" data-u="${u.k}">${u.label}</button>`).join("");
+$("#rate").innerHTML = [1,2,3,4,5].map(n => `<button type="button" role="radio" aria-checked="false" aria-label="${n} star${n>1?"s":""}" data-n="${n}">★</button>`).join("");
+function setRole(k){ F.role = k; document.querySelectorAll("#roleChips .chip").forEach(c => c.setAttribute("aria-checked", String(c.dataset.r === k))); renderPreview(); }
+function setRating(n){ F.rating = n; document.querySelectorAll("#rate button").forEach(b => { const v = Number(b.dataset.n); b.classList.toggle("lit", v <= n); b.setAttribute("aria-checked", String(v === n)); }); $("#rateText").textContent = RATE_WORDS[n] || "Tap a star"; renderPreview(); }
+$("#roleChips").addEventListener("click", e => { const b = e.target.closest(".chip"); if (b) { setRole(b.dataset.r); clearErr("role"); } });
+$("#useChips").addEventListener("click", e => { const b = e.target.closest(".chip"); if (!b) return; const k = b.dataset.u; F.uses.has(k) ? F.uses.delete(k) : F.uses.add(k); b.setAttribute("aria-pressed", String(F.uses.has(k))); renderPreview(); });
+$("#rate").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { setRating(Number(b.dataset.n)); clearErr("rating"); } });
+$("#rate").addEventListener("mouseover", e => { const b = e.target.closest("button"); if (!b) return; const n = Number(b.dataset.n); document.querySelectorAll("#rate button").forEach(x => x.classList.toggle("lit", Number(x.dataset.n) <= n)); });
+$("#rate").addEventListener("mouseleave", () => setRating(F.rating));
+["#fName","#fInst","#fField","#fHead","#fText","#fShowInst"].forEach(s => $(s).addEventListener("input", () => { renderPreview(); counters(); }));
+["#fName","#fEmail","#fText"].forEach(s => $(s).addEventListener("input", e => clearErr(e.target.closest(".field").dataset.f)));
+$("#fAgree").addEventListener("change", () => clearErr("agree"));
+$("#fPublic").addEventListener("change", () => { $("#next").textContent = F.step === 2 ? submitLabel() : "Continue"; });
+function counters(){ $("#headCount").textContent = `${$("#fHead").value.length} / 80`; $("#textCount").textContent = `${$("#fText").value.length} / 700`; }
+function draft(){ return { name:$("#fName").value.trim(), role:F.role, institution: $("#fShowInst").checked ? $("#fInst").value.trim() : "", rating:F.rating, field:$("#fField").value.trim(), headline:$("#fHead").value.trim(), text:$("#fText").value.trim(), uses:[...F.uses] }; }
+function renderPreview(){ const d = draft(); $("#preview").innerHTML = cardHTML({ ...d, id:"preview", rating:d.rating || 0, createdAt: Date.now() }, { preview:true, full:true }); }
+function clearErr(f){ const el = document.querySelector(`.field[data-f="${f}"]`); if (el) el.classList.remove("bad"); }
+function bad(f){ const el = document.querySelector(`.field[data-f="${f}"]`); el.classList.add("bad"); return el; }
+function validate(step){
+  let first = null; const mark = f => { const el = bad(f); first = first || el; };
+  if (step === 0){
+    if ($("#fName").value.trim().length < 2) mark("name");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test($("#fEmail").value.trim())) mark("email");
+    if (!F.role) mark("role");
+  }
+  if (step === 1){
+    if (!F.rating) mark("rating");
+    if ($("#fText").value.trim().length < 20) mark("text");
+  }
+  if (step === 2 && !$("#fAgree").checked) mark("agree");
+  if (first){ const i = first.querySelector("input,textarea,button"); i && i.focus(); }
+  return !first;
+}
+function submitLabel(){ return S.mine && S.mode === "claude" ? "Save changes" : $("#fPublic").checked ? "Post testimonial" : "Send to the team"; }
+function goStep(n){
+  F.step = n;
+  document.querySelectorAll(".step").forEach(s => s.classList.toggle("on", Number(s.dataset.step) === n));
+  document.querySelectorAll("#stepBar button").forEach((b,i) => { b.classList.toggle("now", i === n); b.classList.toggle("done", i < n); });
+  $("#back").classList.toggle("on", n > 0);
+  $("#next").textContent = n === 2 ? submitLabel() : "Continue";
+  const first = document.querySelector(`.step[data-step="${n}"] input, .step[data-step="${n}"] textarea`);
+  if (first && n > 0) first.focus({ preventScroll:true });
+}
+$("#stepBar").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; const n = Number(b.dataset.go); if (n <= F.step || [...Array(n).keys()].every(validate)) goStep(n); });
+$("#back").addEventListener("click", () => goStep(Math.max(0, F.step - 1)));
+$("#next").addEventListener("click", async () => {
+  if (!validate(F.step)) return;
+  if (F.step < 2) return goStep(F.step + 1);
+  if ($("#fWebsite").value) return; // bot
+  const btn = $("#next"); btn.disabled = true; const label = btn.textContent; btn.textContent = "Saving…";
+  const d = draft();
+  const pub = { name:d.name, role:d.role, institution:d.institution, field:d.field, rating:d.rating, headline:d.headline, text:d.text, uses:d.uses };
+  const priv = { email:$("#fEmail").value.trim(), institution:$("#fInst").value.trim(), showInstitution:$("#fShowInst").checked, public:$("#fPublic").checked, updates:$("#fUpdates").checked, suggestions:$("#fSuggest").value.trim() };
+  try {
+    const wasEdit = !!S.mine && S.mode === "claude";
+    const id = await Store.submit(pub, priv);
+    if (priv.public) S.justAdded = id;
+    if (S.mode !== "claude") renderAll();
+    celebrate(btn);
+    toast(wasEdit ? "Changes saved" : priv.public ? "Posted to the wall" : "Sent to the team");
+    showDone(pub.name, priv.public, id, wasEdit);
+  } catch(err){
+    toast(S.mode === "sheets" ? "Couldn't reach the sheet. Check your connection and try again." : "Couldn't save. You may need contributor access to post here.");
+  } finally { btn.disabled = false; btn.textContent = label; }
+});
+function showDone(name, isPublic, id, wasEdit){
+  $("#form").hidden = true; const d = $("#doneState"); d.hidden = false;
+  d.innerHTML = `<div class="done-state">
+    <svg class="burst" viewBox="0 0 90 90" aria-hidden="true"><g stroke-width="3">
+      <line x1="45" y1="45" x2="15" y2="20" stroke="var(--magenta)"/><line x1="45" y1="45" x2="78" y2="18" stroke="var(--cyan)"/><line x1="45" y1="45" x2="80" y2="66" stroke="var(--amber)"/><line x1="45" y1="45" x2="12" y2="70" stroke="var(--lime)"/></g>
+      <circle cx="15" cy="20" r="7" fill="var(--magenta)"/><circle cx="78" cy="18" r="6" fill="var(--cyan)"/><circle cx="80" cy="66" r="7" fill="var(--amber)"/><circle cx="12" cy="70" r="6" fill="var(--lime)"/>
+      <circle cx="45" cy="45" r="14" fill="var(--violet)"/><path d="M38 45l5 5 9-10" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <h3>Thank you, ${esc(name.split(" ")[0])}.</h3>
+    <p>${isPublic ? (wasEdit ? "Your card is updated. Your node in the network reflects the change." : "Your node just joined the network. Look for the pulsing ring at the top of the page.") : "Your feedback went privately to the NetREm team. Thanks for helping make it better."}</p>
+    <div class="cta-row">${isPublic ? `<button class="btn btn-hot" type="button" id="seeCard">See my card</button>` : ""}<button class="btn btn-plain" type="button" id="again">${S.mode === "claude" ? "Edit my testimonial" : "Share another"}</button></div></div>`;
+  $("#again").onclick = () => { d.hidden = true; $("#form").hidden = false; if (S.mode !== "claude") resetForm(); renderMode(); goStep(0); };
+  const sc = $("#seeCard"); if (sc) sc.onclick = () => { setTimeout(() => openCard(id), 50); };
+}
+function resetForm(){ $("#form").reset(); F.uses.clear(); setRole(""); setRating(0); document.querySelectorAll("#useChips .chip").forEach(c => c.setAttribute("aria-pressed","false")); $("#fShowInst").checked = true; $("#fPublic").checked = true; counters(); renderPreview(); }
+function prefill(m){
+  $("#fName").value = m.name || ""; $("#fEmail").value = m.email || ""; $("#fInst").value = m.institution || ""; $("#fField").value = m.field || "";
+  $("#fShowInst").checked = m.showInstitution !== false; $("#fHead").value = m.headline || ""; $("#fText").value = m.text || "";
+  $("#fSuggest").value = m.suggestions || ""; $("#fPublic").checked = m.public !== false; $("#fUpdates").checked = !!m.updates;
+  if (m.role) setRole(m.role); if (m.rating) setRating(Number(m.rating));
+  F.uses = new Set(m.uses || []); document.querySelectorAll("#useChips .chip").forEach(c => c.setAttribute("aria-pressed", String(F.uses.has(c.dataset.u))));
+  counters(); renderPreview(); renderMode();
+}
+
+/* ---------------- confetti (one celebratory moment) ---------------- */
+function celebrate(from){
+  if (reduceMotion) return;
+  const cv = $("#confetti"), c = cv.getContext("2d"), dpr = Math.min(2, devicePixelRatio||1);
+  cv.width = innerWidth*dpr; cv.height = innerHeight*dpr; c.scale(dpr,dpr);
+  const r = from.getBoundingClientRect(), ox = r.left + r.width/2, oy = r.top + r.height/2;
+  const cols = ["--magenta","--cyan","--amber","--lime","--violet","--coral"].map(cssVar);
+  const P = Array.from({length:110}, (_,i) => { const a = Math.random()*Math.PI*2, s = 3 + Math.random()*8; return { x:ox, y:oy, vx:Math.cos(a)*s, vy:Math.sin(a)*s - 5, r:2 + Math.random()*4, c:cols[i%cols.length], link: Math.random() < .25 }; });
+  let f = 0;
+  (function tick(){
+    f++; c.clearRect(0,0,innerWidth,innerHeight);
+    P.forEach((p,i) => { p.vy += 0.22; p.vx *= .985; p.x += p.vx; p.y += p.vy;
+      if (p.link && P[i+1]){ c.strokeStyle = p.c; c.globalAlpha = Math.max(0, .5 - f/180); c.beginPath(); c.moveTo(p.x,p.y); c.lineTo(P[i+1].x,P[i+1].y); c.stroke(); }
+      c.globalAlpha = Math.max(0, 1 - f/110); c.fillStyle = p.c; c.beginPath(); c.arc(p.x,p.y,p.r,0,7); c.fill(); });
+    c.globalAlpha = 1;
+    if (f < 115) requestAnimationFrame(tick); else c.clearRect(0,0,innerWidth,innerHeight);
+  })();
+}
+
+
+
+/* ---------------- seminar feedback ---------------- */
+const EVENTS = [ {k:"course", label:"Course lecture"}, {k:"seminar", label:"Seminar or talk"}, {k:"workshop", label:"Workshop or tutorial"}, {k:"conference", label:"Conference"}, {k:"other", label:"Other"} ];
+const INTENTS = [ {k:"using", label:"Already using it", c:"--lime"}, {k:"soon", label:"Planning to soon", c:"--cyan"}, {k:"maybe", label:"Maybe later", c:"--amber"}, {k:"no", label:"Not for my work", c:"--coral"} ];
+const MORE = [ {k:"math", label:"The model math"}, {k:"code", label:"Hands-on coding"}, {k:"bio", label:"Biology applications"}, {k:"domains", label:"Other domains"}, {k:"interp", label:"Interpreting results"}, {k:"data", label:"Preparing data and priors"} ];
+const evtOf = k => EVENTS.find(e => e.k === k) || EVENTS[4];
+const intentOf = k => INTENTS.find(e => e.k === k) || { label:"", c:"--line" };
+const moreOf = k => MORE.find(e => e.k === k) || { label:k };
+const SF = { role:"", event:"", overall:0, clarity:0, relevance:0, intent:"", more:new Set() };
+function radioChips(el, list, key, withDot){
+  el.innerHTML = list.map(x => `<button type="button" class="chip" role="radio" aria-checked="false" data-k="${x.k}">${withDot ? `<i style="background:var(${x.c})"></i>` : ""}${x.label}</button>`).join("");
+  el.addEventListener("click", e => { const b = e.target.closest(".chip"); if (!b) return; SF[key] = b.dataset.k; el.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-checked", String(c === b))); semClear(key === "event" ? "event" : key); });
+}
+function scaleInput(el, key, lo, hi){
+  el.innerHTML = `<small>${lo}</small>` + [1,2,3,4,5].map(n => `<button type="button" role="radio" aria-checked="false" data-n="${n}" aria-label="${n} of 5">${n}</button>`).join("") + `<small>${hi}</small>`;
+  el.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; SF[key] = Number(b.dataset.n); el.querySelectorAll("button").forEach(x => x.setAttribute("aria-checked", String(x === b))); semClear(key); });
+}
+radioChips($("#sRoleChips"), ROLES, "role", true);
+radioChips($("#sEvtChips"), EVENTS, "event", false);
+radioChips($("#sIntentChips"), INTENTS, "intent", true);
+scaleInput($("#sClarity"), "clarity", "Confusing", "Very clear");
+scaleInput($("#sRelevance"), "relevance", "Not relevant", "Very relevant");
+$("#sMoreChips").innerHTML = MORE.map(m => `<button type="button" class="chip" aria-pressed="false" data-k="${m.k}">${m.label}</button>`).join("");
+$("#sMoreChips").addEventListener("click", e => { const b = e.target.closest(".chip"); if (!b) return; const k = b.dataset.k; SF.more.has(k) ? SF.more.delete(k) : SF.more.add(k); b.setAttribute("aria-pressed", String(SF.more.has(k))); });
+$("#sRate").innerHTML = [1,2,3,4,5].map(n => `<button type="button" role="radio" aria-checked="false" aria-label="${n} star${n>1?"s":""}" data-n="${n}">★</button>`).join("");
+function setSemRating(n){ SF.overall = n; document.querySelectorAll("#sRate button").forEach(b => { const v = Number(b.dataset.n); b.classList.toggle("lit", v <= n); b.setAttribute("aria-checked", String(v === n)); }); $("#sRateText").textContent = RATE_WORDS[n] || "Please tap a star"; }
+$("#sRate").addEventListener("click", e => { const b = e.target.closest("button"); if (b){ setSemRating(Number(b.dataset.n)); semClear("overall"); } });
+$("#sLearned").addEventListener("input", e => { $("#sLearnedCount").textContent = `${e.target.value.length} / 600`; semClear("learned"); });
+["#sName","#sEmail"].forEach(x => $(x).addEventListener("input", e => semClear(e.target.closest(".field").dataset.s)));
+$("#sAgree").addEventListener("change", () => semClear("agree"));
+$("#sShare").addEventListener("change", e => { $("#sAnon").disabled = !e.target.checked; });
+function semClear(k){ const el = document.querySelector(`.field[data-s="${k}"]`); if (el) el.classList.remove("bad"); }
+function semValidate(){
+  let first = null; const mark = k => { const el = document.querySelector(`.field[data-s="${k}"]`); el.classList.add("bad"); first = first || el; };
+  if ($("#sName").value.trim().length < 2) mark("name");
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test($("#sEmail").value.trim())) mark("email");
+  if (!SF.role) mark("role"); if (!SF.event) mark("event"); if (!SF.overall) mark("overall");
+  if (!SF.clarity) mark("clarity"); if (!SF.relevance) mark("relevance");
+  if ($("#sLearned").value.trim().length < 15) mark("learned"); if (!SF.intent) mark("intent");
+  if (!$("#sAgree").checked) mark("agree");
+  if (first){ first.scrollIntoView({ block:"center" }); const i = first.querySelector("input,textarea,button"); i && i.focus({ preventScroll:true }); toast("Please complete the highlighted fields"); }
+  return !first;
+}
+$("#sSubmit").addEventListener("click", async () => {
+  if (!semValidate()) return;
+  if ($("#sWebsite").value) return;
+  const btn = $("#sSubmit"); btn.disabled = true; btn.textContent = "Sending…";
+  const share = $("#sShare").checked, anon = $("#sAnon").checked, name = $("#sName").value.trim();
+  const pub = { role:SF.role, eventType:SF.event, overall:SF.overall, clarity:SF.clarity, relevance:SF.relevance, intent:SF.intent,
+    quote: share ? $("#sLearned").value.trim() : "", name: share && !anon ? name : "" };
+  const priv = { realName:name, email:$("#sEmail").value.trim(), institution:$("#sInst").value.trim(), field:$("#sField").value.trim(),
+    eventName:$("#sEventName").value.trim(), date:$("#sDate").value.trim(), learned:$("#sLearned").value.trim(), unclear:$("#sUnclear").value.trim(),
+    apply:$("#sApply").value.trim(), more:[...SF.more], questions:$("#sQuestions").value.trim(), share, anonymous:anon, updates:$("#sUpdates").checked };
+  try {
+    await Store.submitSeminar(pub, priv);
+    if (S.mode !== "claude") { renderSeminar(); renderInbox(); }
+    celebrate(btn); toast("Feedback sent");
+    $("#semForm").hidden = true; const d = $("#semDone"); d.hidden = false;
+    d.innerHTML = `<div class="done-state"><h3>Thank you, ${esc(name.split(" ")[0])}.</h3><p>Your feedback reached the NetREm team.${priv.questions ? " We'll reply to your question by email." : ""} When you're ready to try the tool, the GitHub repository is the best place to start.</p>
+      <div class="cta-row"><a class="btn btn-dark" href="https://github.com/SaniyaKhullar/NetREm" target="_blank" rel="noopener">Open NetREm on GitHub</a><button class="btn btn-plain" type="button" id="semAgain">Give feedback on another session</button></div></div>`;
+    $("#semAgain").onclick = () => { semReset(); d.hidden = true; $("#semForm").hidden = false; };
+  } catch(err){
+    toast(S.mode === "sheets" ? "Couldn't reach the sheet. Please check your connection and try again." : "Couldn't send. You may need contributor access to post here.");
+  } finally { btn.disabled = false; btn.textContent = "Send feedback"; }
+});
+function semReset(){
+  $("#semForm").reset(); Object.assign(SF, { role:"", event:"", overall:0, clarity:0, relevance:0, intent:"", more:new Set() });
+  document.querySelectorAll("#semForm [aria-checked]").forEach(x => x.setAttribute("aria-checked","false"));
+  document.querySelectorAll("#sMoreChips .chip").forEach(x => x.setAttribute("aria-pressed","false"));
+  setSemRating(0); $("#sShare").checked = true; $("#sAnon").disabled = false; $("#sLearnedCount").textContent = "0 / 600";
+}
+function renderSeminar(){
+  const E = S.seminar, n = E.length;
+  const avg = k => n ? (E.reduce((t,e) => t + (Number(e[k])||0), 0) / n).toFixed(1) : "–";
+  const tryPct = n ? Math.round(E.filter(e => e.intent === "using" || e.intent === "soon").length / n * 100) + "%" : "–";
+  $("#semStats").innerHTML = `<div><b>${n}</b><span>${n === 1 ? "response" : "responses"}</span></div><div><b>${avg("overall")}</b><span>overall, out of 5</span></div><div><b>${avg("clarity")}</b><span>clarity, out of 5</span></div><div><b>${tryPct}</b><span>using or plan to try it</span></div>`;
+  const ic = INTENTS.map(i => [i, E.filter(e => e.intent === i.k).length]).filter(x => x[1]);
+  $("#semIntent").innerHTML = n ? `<h3 class="mini-h" style="margin-top:0">Will attendees try NetREm?</h3><div class="stack">${ic.map(([i,c]) => `<i style="flex-grow:${c};background:var(${i.c})"></i>`).join("")}</div>
+    <div class="keys">${ic.map(([i,c]) => `<div><i style="background:var(${i.c})"></i>${i.label}<em>${Math.round(c/n*100)}%</em></div>`).join("")}</div>` : "";
+  const Q = E.filter(e => e.quote).sort((a,b) => (b.createdAt||0) - (a.createdAt||0)).slice(0, 8);
+  $("#semQuotes").innerHTML = Q.length ? Q.map(e => `<div class="quote" style="border-left:5px solid var(${roleOf(e.role).c})"><span class="evt">${esc(evtOf(e.eventType).label)}</span>
+      <p>“${esc(e.quote)}”</p><div class="meta">${esc(e.name || "A session attendee")}, ${esc(roleOf(e.role).label)}${e.createdAt ? ", " + esc(fmtDate(e.createdAt)) : ""}</div></div>`).join("")
+    : `<div class="wall-empty" style="padding:2rem 1.25rem"><h3>No feedback yet</h3><p>Attended a NetREm lecture or seminar? Please be the first to share what you took away.</p></div>`;
+  const nt = $("#semNotice");
+  if (S.mode === "demo") nt.innerHTML = `<div class="notice">Demo mode. Feedback is saved only in this browser. Please add your Google Sheets endpoint to collect it for real.</div>`;
+  else if (S.mode === "readonly" || (S.mode === "claude" && !S.canWrite)) nt.innerHTML = `<div class="notice info">You can read feedback here, but sending it needs contributor access to this page. Please ask the NetREm team for an invite.</div>`;
+  else nt.innerHTML = "";
+  $("#sSubmit").disabled = S.mode === "readonly" || (S.mode === "claude" && !S.canWrite);
+}
+
+/* ---------------- domain explorer ---------------- */
+const DOMAINS = [
+  { k:"genes", label:"Gene regulation", c:"--magenta", y:"Target gene expression",
+    preds:["SOX10","EGR2","POU3F1","YY1","JUN","SP1","CTCF"], s:[.9,.85,.6,.3,.62,.2,.15], sg:[1,1,1,-1,-1,1,-1], pos:"Activator", neg:"Repressor",
+    links:[[0,1],[1,2],[0,2],[4,5],[3,6],[3,5]],
+    net:"Protein–protein interactions among transcription factors",
+    unit:"Single cells of one cell type", q:"Which TFs coordinate to regulate this gene in Schwann cells?" },
+  { k:"neuro", label:"Neuroscience", c:"--violet", y:"Memory test score",
+    preds:["Hippocampus","Prefrontal ctx","Entorhinal ctx","Thalamus","Amygdala","Cerebellum","Visual ctx"], s:[.9,.7,.65,.35,.45,.1,.15], sg:[1,1,1,1,-1,1,1],
+    links:[[0,2],[0,1],[1,3],[0,4],[3,6],[5,3]],
+    net:"Structural connectivity between brain regions (tractography)",
+    unit:"Participants with brain imaging", q:"Which connected regions jointly predict memory performance?" },
+  { k:"eco", label:"Ecology", c:"--lime", y:"Ecosystem productivity",
+    preds:["Pollinators","Grasses","Legumes","Fungi","Grazers","Predators","Soil microbes"], s:[.6,.8,.75,.5,.55,.2,.65], sg:[1,1,1,1,-1,1,1],
+    links:[[2,6],[1,4],[4,5],[3,6],[0,2],[1,3]],
+    net:"Food web and known species interactions",
+    unit:"Field plots or survey sites", q:"Which interacting species groups drive productivity together?" },
+  { k:"health", label:"Public health", c:"--coral", y:"Asthma hospitalization rate",
+    preds:["Air pollution","Housing quality","Income","Smoking","Insurance","Green space","Pollen"], s:[.9,.6,.5,.55,.35,.3,.45], sg:[1,-1,-1,1,-1,-1,1],
+    links:[[0,5],[1,2],[2,4],[2,3],[0,6],[5,6]],
+    net:"Known causal and co-occurrence links between risk factors",
+    unit:"Neighborhoods or counties", q:"Which linked risk factors jointly explain hospitalizations?" },
+  { k:"finance", label:"Finance and economics", c:"--amber", y:"Regional GDP growth",
+    preds:["Manufacturing","Logistics","Energy costs","Retail","Banking","Tech","Agriculture"], s:[.75,.6,.55,.4,.5,.7,.2], sg:[1,1,-1,1,1,1,1],
+    links:[[0,1],[0,2],[1,3],[4,5],[4,0],[2,6]],
+    net:"Supply-chain and input–output links between sectors",
+    unit:"Regions over time", q:"Which interdependent sectors move growth together?" },
+  { k:"climate", label:"Climate and environment", c:"--cyan", y:"River flood level downstream",
+    preds:["Upstream gauge","Tributary A","Tributary B","Snowmelt","Soil moisture","Rainfall","Reservoir space"], s:[.9,.6,.55,.5,.45,.7,.55], sg:[1,1,1,1,1,1,-1],
+    links:[[1,0],[2,0],[3,1],[4,2],[5,4],[6,0]],
+    net:"River network and spatial adjacency of sensors",
+    unit:"Daily sensor readings", q:"Which connected sensors together forecast flooding?" },
+  { k:"edu", label:"Education", c:"--violet", y:"Final course grade",
+    preds:["Algebra","Statistics","Programming","Reading","Logic","Writing","Absences"], s:[.6,.75,.7,.3,.55,.35,.6], sg:[1,1,1,1,1,1,-1],
+    links:[[0,1],[4,2],[0,4],[3,5],[1,2],[6,5]],
+    net:"Prerequisite links between skills",
+    unit:"Students in a course", q:"Which related skills combine to predict success?" },
+  { k:"eng", label:"Engineering and IoT", c:"--lime", y:"Machine failure risk",
+    preds:["Vibration","Temperature","Current draw","Pressure","Recent maintenance","Load","Run hours"], s:[.85,.7,.6,.35,.6,.55,.45], sg:[1,1,1,1,-1,1,1],
+    links:[[0,5],[1,2],[2,5],[3,1],[4,1],[6,0]],
+    net:"Physical wiring and component layout of sensors",
+    unit:"Machines over time", q:"Which linked sensors signal failure together?" }
+];
+const D = { i:0, beta:0.5, alpha:0.35 };
+function domScores(d){
+  // Illustrative only: magnitudes from network-smoothed importance minus a lasso-style threshold, then the predictor's sign.
+  const n = d.preds.length, nb = Array.from({length:n}, () => []);
+  d.links.forEach(([a,b]) => { nb[a].push(b); nb[b].push(a); });
+  const e = d.s.map((v,i) => { const m = nb[i].length ? nb[i].reduce((t,j) => t + d.s[j], 0) / nb[i].length : 0; return (1 - D.beta*0.5) * v + D.beta*0.5*m + D.beta*0.15*nb[i].length/3; });
+  return e.map((v,i) => Math.max(0, v - D.alpha) * (d.sg[i] || 1));
+}
+function coordPairs(d, coef){
+  const sel = coef.map((v,i) => v !== 0 ? i : -1).filter(i => i >= 0), mx = Math.max(.01, ...coef.map(Math.abs));
+  const known = new Set(d.links.map(([a,b]) => Math.min(a,b) + "-" + Math.max(a,b)));
+  const pairs = [];
+  for (let x = 0; x < sel.length; x++) for (let y = x+1; y < sel.length; y++){
+    const i = sel[x], j = sel[y], k = i + "-" + j, isKnown = known.has(k);
+    const jitter = (hash(d.k + ":" + k) % 1000) / 1000;
+    const raw = 0.45 * Math.sqrt(Math.abs(coef[i]*coef[j])) / mx + (isKnown ? 0.25 + 0.35*D.beta : 0) + 0.3*jitter;
+    // Sign rule: same direction (2 activators or 2 repressors) = positive; opposite directions = negative.
+    pairs.push({ i, j, known:isKnown, raw, sign: Math.sign(coef[i]) * Math.sign(coef[j]) });
+  }
+  const top = Math.max(.01, ...pairs.map(p => p.raw));
+  pairs.forEach(p => { p.mag = Math.max(1, Math.round(p.raw / top * 100)); p.score = p.sign * p.mag; });
+  return { sel, pairs, known };
+}
+const fmtScore = v => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v);
+function renderDomain(){
+  const d = DOMAINS[D.i], col = cssVar(d.c), coef = domScores(d), mx = Math.max(.01, ...coef.map(Math.abs));
+  const POS = d.pos || "Raises y", NEG = d.neg || "Lowers y";
+  const n = d.preds.length, cx = 215, cy = 215, R = 130, Y = { x:600, y:215 };
+  const P = d.preds.map((_,i) => { const a = -Math.PI/2 + i * 2*Math.PI / n; return { x: cx + Math.cos(a)*R, y: cy + Math.sin(a)*R, a }; });
+  const { sel, pairs } = coordPairs(d, coef);
+  const GREEN = "#6ED46A", RED = "#FF6B6B", UP = "#FFBE3D", DOWN = "#5AA9FF";
+  let svg = `<defs>
+    <marker id="arrUp" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="${UP}"/></marker>
+    <marker id="arrDown" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><rect x="6" y="0" width="3" height="10" fill="${DOWN}"/></marker>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>`;
+  // effects on y: arrowhead for positive (activator), flat bar for negative (repressor)
+  P.forEach((p,i) => { if (coef[i] !== 0){ const pos = coef[i] > 0, w = 1.2 + Math.abs(coef[i])/mx*6;
+    svg += `<path d="M${p.x} ${p.y} C ${p.x+120} ${p.y}, ${Y.x-140} ${Y.y}, ${Y.x-42} ${Y.y}" fill="none" stroke="${pos ? UP : DOWN}" stroke-opacity="${(.25 + .5*Math.abs(coef[i])/mx).toFixed(2)}" stroke-width="${w.toFixed(1)}" marker-end="url(#${pos ? "arrUp" : "arrDown"})"><title>${esc(d.preds[i])}: ${pos ? POS : NEG}, coefficient ${coef[i].toFixed(2)}</title></path>`; } });
+  // prior links touching a dropped predictor
+  d.links.forEach(([a,b]) => { if (coef[a] !== 0 && coef[b] !== 0) return; const A = P[a], B = P[b];
+    svg += `<line x1="${A.x}" y1="${A.y}" x2="${B.x}" y2="${B.y}" stroke="rgba(255,255,255,.3)" stroke-width="1.2" stroke-dasharray="2 5"/>`; });
+  // full coordination network: colour = sign, solid = known in prior, dashed = new
+  [...pairs].sort((a,b) => a.mag - b.mag).forEach(pr => { const A = P[pr.i], B = P[pr.j], t = pr.mag/100;
+    svg += `<line x1="${A.x}" y1="${A.y}" x2="${B.x}" y2="${B.y}" stroke="${pr.score > 0 ? GREEN : RED}" stroke-opacity="${(.3 + .7*t).toFixed(2)}" stroke-width="${(.8 + 6*t).toFixed(1)}" stroke-linecap="round"${pr.known ? "" : ` stroke-dasharray="10 6"`}${t > .75 ? ` filter="url(#glow)"` : ""}><title>${esc(d.preds[pr.i])} and ${esc(d.preds[pr.j])}: ${fmtScore(pr.score)} (${pr.known ? "known in prior" : "new link"})</title></line>`; });
+  // nodes: + for positive-effect predictors, − for negative-effect predictors
+  P.forEach((p,i) => { const on = coef[i] !== 0, pos = (d.sg[i] || 1) > 0, c = Math.cos(p.a), sx = Math.sin(p.a);
+    const lx = p.x + c*26, ly = p.y + sx*24 + 5, anchor = Math.abs(c) < .3 ? "middle" : c > 0 ? "start" : "end";
+    svg += `<circle cx="${p.x}" cy="${p.y}" r="${on ? 14 : 10}" fill="${on ? (pos ? UP : DOWN) : "#2B2F6E"}" stroke="#fff" stroke-opacity="${on ? .9 : .35}" stroke-width="2"/>
+      <text x="${p.x}" y="${p.y + 5}" text-anchor="middle" font-family="Atkinson Hyperlegible, system-ui, sans-serif" font-size="${on ? 16 : 12}" font-weight="700" fill="${on ? "#14163A" : "#8C91C7"}">${pos ? "+" : "−"}</text>
+      <text x="${lx}" y="${ly}" text-anchor="${anchor}" font-family="Atkinson Hyperlegible, system-ui, sans-serif" font-size="15" font-weight="700" fill="${on ? "#F2F3FF" : "#8C91C7"}"${on ? "" : ` text-decoration="line-through"`}>${esc(d.preds[i])}</text>`; });
+  svg += `<circle cx="${Y.x}" cy="${Y.y}" r="38" fill="#14163A" stroke="${col}" stroke-width="4" filter="url(#glow)"/><text x="${Y.x}" y="${Y.y+7}" text-anchor="middle" font-family="Bricolage Grotesque, system-ui, sans-serif" font-size="22" font-weight="800" fill="#fff">y</text>`;
+  const words = d.y.split(" "); let lines = [], cur = "";
+  words.forEach(w => { if ((cur + " " + w).trim().length > 14){ lines.push(cur.trim()); cur = w; } else cur += " " + w; }); lines.push(cur.trim());
+  svg += `<text text-anchor="middle" font-family="Atkinson Hyperlegible, system-ui, sans-serif" font-size="14" font-weight="700" fill="#F2F3FF">${lines.map((l,k) => `<tspan x="${Y.x}" y="${Y.y + 62 + k*18}">${esc(l)}</tspan>`).join("")}</text>`;
+  svg += `<text x="${cx}" y="24" text-anchor="middle" font-family="Atkinson Hyperlegible, system-ui, sans-serif" font-size="13" fill="#AEB3E0">Predictors and their coordination network</text><text x="${Y.x}" y="24" text-anchor="middle" font-family="Atkinson Hyperlegible, system-ui, sans-serif" font-size="13" fill="#AEB3E0">Outcome</text>`;
+  $("#domSvg").innerHTML = svg;
+  $("#lgUp").textContent = `${POS} (+): pushes y up`; $("#lgDown").textContent = `${NEG} (−): pushes y down`;
+  const nk = pairs.filter(p => p.known).length, nn = pairs.length - nk, np = pairs.filter(p => p.score > 0).length, nneg = pairs.length - np;
+  $("#domCap").textContent = sel.length > 1
+    ? `${d.label}: ${sel.length} of ${n} predictors kept. NetREm scores all ${pairs.length} pairs from −100 to +100: ${np} positive, ${nneg} negative. ${nk} ${nk === 1 ? "link was" : "links were"} in the prior network and ${nn} ${nn === 1 ? "is" : "are"} new.`
+    : `${d.label}: ${sel.length} of ${n} predictors kept. Please lower α to keep more predictors and see their coordination network.`;
+  document.documentElement.style.setProperty("--dc", `var(${d.c})`);
+  $("#domFacts").innerHTML = `<div class="q"><dt>The question</dt><dd>${esc(d.q)}</dd></div>
+    <div><dt>Outcome (y)</dt><dd>${esc(d.y)}</dd></div>
+    <div><dt>Predictors (X)</dt><dd>${d.preds.map((x,i) => `${esc(x)} <span class="sgn ${(d.sg[i]||1) > 0 ? "up" : "down"}">${(d.sg[i]||1) > 0 ? "+" : "−"}</span>`).join(", ")}</dd></div>
+    <div><dt>Prior network</dt><dd>${esc(d.net)}</dd></div>
+    <div><dt>Samples</dt><dd>${esc(d.unit)}</dd></div>`;
+  const order = coef.map((v,i) => [v,i]).sort((a,b) => Math.abs(b[0]) - Math.abs(a[0]));
+  $("#coefBars").innerHTML = order.map(([v,i]) => { const w = Math.abs(v)/mx*50;
+    return `<div class="${v !== 0 ? "" : "zero"}"><span class="nm">${esc(d.preds[i])}</span><div class="track dv"><i style="${v >= 0 ? `left:50%;width:${w}%` : `left:${50-w}%;width:${w}%`};background:${v >= 0 ? "var(--amber)" : "#3D8BEB"}"></i></div><em>${v !== 0 ? (v > 0 ? "+" : "−") + Math.abs(v).toFixed(2) : "0"}</em></div>`; }).join("");
+  const sc = {}; pairs.forEach(p => { sc[p.i+"-"+p.j] = p; sc[p.j+"-"+p.i] = p; });
+  $("#heat").innerHTML = sel.length < 2 ? `<tr><td class="empty-note">Please keep at least two predictors to see scores.</td></tr>` :
+    `<thead><tr><th></th>${sel.map((_,k) => `<th scope="col" title="${esc(d.preds[sel[k]])}">${k+1}</th>`).join("")}</tr></thead><tbody>` +
+    sel.map((i,r) => `<tr><th scope="row"><span class="hn">${r+1}</span>${esc(d.preds[i])} <span class="sgn ${coef[i] > 0 ? "up" : "down"}">${coef[i] > 0 ? "+" : "−"}</span></th>${sel.map(j => { if (i === j) return `<td class="diag"></td>`; const p = sc[i+"-"+j];
+      return `<td class="${p.score > 0 ? "pos" : "neg"}${p.known ? " known" : ""}" style="--v:${p.mag}%" title="${esc(d.preds[i])} and ${esc(d.preds[j])}: ${fmtScore(p.score)}, ${p.known ? "known in prior" : "new link"}">${fmtScore(p.score)}</td>`; }).join("")}</tr>`).join("") + `</tbody>`;
+  document.querySelectorAll("#domTabs .chip").forEach((b,i) => { b.setAttribute("aria-selected", String(i === D.i)); b.tabIndex = i === D.i ? 0 : -1; });
+}
+$("#domTabs").innerHTML = DOMAINS.map((d,i) => `<button type="button" class="chip" role="tab" style="--dc:var(${d.c})" aria-selected="${i===0}" aria-controls="domSvg" data-i="${i}"><i style="background:var(${d.c})"></i>${d.label}</button>`).join("");
+$("#domTabs").addEventListener("click", e => { const b = e.target.closest(".chip"); if (b){ D.i = Number(b.dataset.i); renderDomain(); } });
+$("#domTabs").addEventListener("keydown", e => { if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return; D.i = (D.i + (e.key === "ArrowRight" ? 1 : -1) + DOMAINS.length) % DOMAINS.length; renderDomain(); document.querySelectorAll("#domTabs .chip")[D.i].focus(); });
+$("#beta").addEventListener("input", e => { D.beta = Number(e.target.value); $("#betaOut").textContent = D.beta.toFixed(2); renderDomain(); });
+$("#alpha").addEventListener("input", e => { D.alpha = Number(e.target.value); $("#alphaOut").textContent = D.alpha.toFixed(2); renderDomain(); });
+renderDomain();
+window.SEM_READY = true; renderSeminar();
+
+/* ---------------- boot ---------------- */
+(async function boot(){
+  counters(); renderPreview(); renderFilters();
+  resizeGraph(); new ResizeObserver(resizeGraph).observe(canvas);
+  renderAll();
+  if (!reduceMotion) requestAnimationFrame(loop);
+  if (document.fonts) document.fonts.ready.then(() => reduceMotion && draw());
+  try { await Store.init(); } catch(e){ S.mode = "readonly"; S.canWrite = false; }
+  renderMode(); renderAll();
+  if (S.mode === "sheets") setInterval(async () => { if (!document.hidden){ await Store.refreshSheets(); renderAll(); } }, 60000);
+})();
+</script>
+</body>
+</html>
