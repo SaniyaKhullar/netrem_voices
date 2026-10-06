@@ -12,7 +12,7 @@
 :root{
   --bg:#F4F6FF; --surface:#FFFFFF; --surface-2:#EBEEFF; --text:#1A1C3A; --muted:#565B85; --line:#D7DCF4;
   --ink:#14163A; --ink-2:#22265E; --on-ink:#F2F3FF; --on-ink-muted:#AEB3E0;
-  --magenta:#E5438F; --cyan:#0FA3C0; --amber:#E89B0C; --lime:#3FAA45; --violet:#6F52F2; --coral:#F25C47;
+  --magenta:#E5438F; --cyan:#0FA3C0; --amber:#E89B0C; --lime:#3FAA45; --violet:#6F52F2; --coral:#F25C47; --sky:#2F7FD8;
   --focus:#6F52F2; --star:#F2A91E;
   --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
   --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -25,13 +25,13 @@
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#0E0F2B; --surface:#171940; --surface-2:#1F2252; --text:#ECEEFF; --muted:#A6ABD8; --line:#2D3170;
-    --magenta:#FF62A8; --cyan:#3CCBE6; --amber:#FFBE3D; --lime:#6ED46A; --violet:#9C85FF; --coral:#FF7E6B;
+    --magenta:#FF62A8; --cyan:#3CCBE6; --amber:#FFBE3D; --lime:#6ED46A; --violet:#9C85FF; --coral:#FF7E6B; --sky:#5AA9FF;
     --focus:#9C85FF; color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --bg:#0E0F2B; --surface:#171940; --surface-2:#1F2252; --text:#ECEEFF; --muted:#A6ABD8; --line:#2D3170;
-  --magenta:#FF62A8; --cyan:#3CCBE6; --amber:#FFBE3D; --lime:#6ED46A; --violet:#9C85FF; --coral:#FF7E6B;
+  --magenta:#FF62A8; --cyan:#3CCBE6; --amber:#FFBE3D; --lime:#6ED46A; --violet:#9C85FF; --coral:#FF7E6B; --sky:#5AA9FF;
   --focus:#9C85FF; color-scheme:dark;
 }
 *,*::before,*::after{box-sizing:inherit}
@@ -58,7 +58,7 @@ p{margin:0}
 .bar nav a:hover{color:var(--on-ink);background:rgba(255,255,255,.08)}
 .bar nav a.pill{background:var(--magenta);color:#fff;font-weight:700}
 .bar nav a.pill:hover{background:color-mix(in srgb,var(--magenta) 85%,#fff)}
-@media (max-width:720px){.bar nav a:not(.pill){display:none}}
+@media (max-width:1100px){.bar nav a:not(.pill){display:none}}
 
 /* ---------- hero ---------- */
 .hero{position:relative;background:radial-gradient(1200px 600px at 75% 40%,var(--ink-2),var(--ink) 70%);color:var(--on-ink);overflow:hidden}
@@ -159,8 +159,8 @@ select{padding:.8rem 2.2rem .8rem 1rem;border-radius:999px;border:1.5px solid va
 .card .txt{color:var(--text);white-space:pre-line}
 .card .txt.clamp{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
 .more{appearance:none;background:none;border:0;color:var(--violet);font:700 .9rem var(--body);padding:.3rem 0;cursor:pointer}
-.tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.8rem}
-.tag{font-size:.78rem;padding:.25rem .6rem;border-radius:999px;background:var(--surface-2);color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;align-items:flex-start;gap:.35rem;margin-top:.8rem}
+.tag{line-height:1.3;white-space:nowrap;font-size:.78rem;padding:.25rem .6rem;border-radius:999px;background:var(--surface-2);color:var(--muted)}
 .who{display:flex;align-items:center;gap:.7rem;margin-top:1.1rem}
 .av{width:42px;height:42px;border-radius:50%;flex:none;display:grid;place-items:center;font:800 .95rem var(--display);color:#fff;background:var(--c,var(--violet))}
 .who b{display:block;font-size:.98rem;line-height:1.25}
@@ -187,7 +187,7 @@ select{padding:.8rem 2.2rem .8rem 1rem;border-radius:999px;border:1.5px solid va
 .field > label,.field > .label{display:block;font-weight:700;margin-bottom:.45rem}
 .field .hint{font-size:.88rem;color:var(--muted);margin-top:.35rem}
 .field .req{color:var(--magenta)}
-input[type=text],input[type=email],textarea{width:100%;padding:.85rem 1rem;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--bg);color:var(--text);font:inherit}
+input[type=text],input[type=email],input[type=url],textarea{width:100%;padding:.85rem 1rem;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--bg);color:var(--text);font:inherit}
 input:focus,textarea:focus,select:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 30%,transparent)}
 textarea{min-height:150px;resize:vertical;line-height:1.5}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
@@ -288,6 +288,67 @@ td .mini:hover{border-color:var(--coral);color:var(--coral)}
 .quote .meta{margin-top:.6rem;font-size:.85rem;color:var(--muted)}
 .quote .evt{display:inline-block;font-size:.75rem;font-weight:700;padding:.2rem .55rem;border-radius:999px;background:color-mix(in srgb,var(--cyan) 18%,transparent);margin-bottom:.5rem}
 .inbox-h{margin:3rem 0 1rem;font-size:1.5rem}
+
+.proj{display:inline-flex;align-items:center;gap:.4rem;margin-top:.85rem;font-weight:700;font-size:.9rem;color:var(--violet);text-decoration:none;border:1.5px solid color-mix(in srgb,var(--violet) 35%,transparent);border-radius:999px;padding:.35rem .8rem}
+.proj:hover{background:color-mix(in srgb,var(--violet) 10%,transparent)}
+.proj svg{width:15px;height:15px}
+.proj span{font-weight:400;color:var(--muted);max-width:12rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* insights */
+.insights{background:var(--surface)}
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;margin-bottom:2rem}
+@media (max-width:960px){.kpis{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:520px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpis div{background:var(--bg);padding:1.2rem 1.25rem}
+.kpis b{display:block;font:800 2rem/1 var(--display)}
+.kpis span{color:var(--muted);font-size:.86rem}
+.cloud-card{background:var(--ink);color:var(--on-ink);border-radius:var(--r-lg);padding:1.25rem 1.25rem .75rem;margin-bottom:2rem}
+.cloud-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.75rem;margin-bottom:.5rem}
+.cloud-head h3{font-size:1.35rem}
+.cloud-tabs{display:flex;gap:.4rem;flex-wrap:wrap}
+.cloud-tabs button{appearance:none;border:1.5px solid rgba(255,255,255,.25);background:transparent;color:var(--on-ink);font:700 .85rem var(--body);padding:.45rem .85rem;border-radius:999px;cursor:pointer}
+.cloud-tabs button[aria-selected="true"]{background:#fff;color:var(--ink)}
+#cloud{display:block;width:100%;height:auto}
+#cloud text{cursor:pointer;transition:opacity .15s}
+#cloud text:hover{opacity:.7}
+.cloud-note{font-size:.85rem;color:var(--on-ink-muted);padding:.25rem .25rem .5rem}
+.dash{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+@media (max-width:900px){.dash{grid-template-columns:1fr}}
+.plot{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:1.25rem}
+.plot h3{font-size:1.1rem;margin-bottom:.25rem}
+.plot .sub{color:var(--muted);font-size:.86rem;margin-bottom:.8rem}
+.plot svg{display:block;width:100%;height:auto;overflow:visible}
+.plot svg text{fill:var(--muted);font-family:var(--body);font-size:12px}
+.plot svg .val{fill:var(--text);font-weight:700}
+.plot svg .grid{stroke:var(--line)}
+.plot-legend{display:flex;flex-wrap:wrap;gap:.35rem 1rem;font-size:.85rem;margin-top:.6rem}
+.plot-legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:.4rem;vertical-align:-1px}
+.donut-wrap{display:grid;grid-template-columns:170px 1fr;gap:1.25rem;align-items:center}
+@media (max-width:420px){.donut-wrap{grid-template-columns:1fr}}
+.plot .use-row:first-child{margin-top:0}
+/* case studies */
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.25rem}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column}
+.case-art{height:120px;background:radial-gradient(260px 120px at 70% 30%,color-mix(in srgb,var(--cc) 55%,var(--ink)),var(--ink))}
+.case-art svg{width:100%;height:100%}
+.case-body{padding:1.2rem 1.25rem 1.3rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.case-body .tag{align-self:flex-start;background:color-mix(in srgb,var(--cc) 18%,transparent);color:var(--text);font-weight:700}
+.case-body h3{font-size:1.15rem}
+.case-body p{color:var(--muted);font-size:.95rem;flex:1}
+.case-actions{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem}
+.case-actions .btn{padding:.65rem 1rem;font-size:.9rem}
+.soon{font-size:.88rem;color:var(--muted);font-weight:700;padding:.65rem 0}
+/* creator */
+.creator-grid{display:grid;grid-template-columns:320px 1fr;gap:3rem;align-items:center}
+@media (max-width:860px){.creator-grid{grid-template-columns:1fr;justify-items:start}}
+.portrait{position:relative;width:280px;height:280px}
+.portrait::before{content:"";position:absolute;inset:-10px;border-radius:50%;background:conic-gradient(var(--magenta),var(--amber),var(--lime),var(--cyan),var(--violet),var(--magenta))}
+.portrait img,.portrait .ph{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;object-fit:cover;border:6px solid var(--bg);background:var(--ink)}
+.portrait .ph{display:grid;place-items:center;font:800 5rem var(--display);color:#fff;background:linear-gradient(135deg,var(--violet),var(--magenta))}
+.portrait .orb{position:absolute;border-radius:50%;border:3px solid var(--bg)}
+.creator-copy .kicker{font-family:var(--display);font-weight:700;color:var(--violet);font-size:1.1rem;margin-bottom:.4rem}
+.creator-copy h2{margin-bottom:1rem}
+.creator-copy p{color:var(--muted);margin-bottom:1rem;max-width:40rem;font-size:1.07rem}
+.creator-copy .link-row{margin-top:1.25rem}
 /* domains */
 .domains{background:var(--surface)}
 .dom-tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.75rem}
@@ -397,12 +458,12 @@ footer a{color:var(--on-ink)}
       NetREm Voices
     </a>
     <nav aria-label="Sections">
-      <a href="#pulse">Community pulse</a>
       <a href="#wall">Testimonials</a>
-      <a href="#seminar">Seminar feedback</a>
-      <a href="#about">About NetREm</a>
+      <a href="#seminar">Seminar</a>
+      <a href="#insights">Insights</a>
+      <a href="#cases">Case studies</a>
       <a href="#domains">Any domain</a>
-      <a href="#faq">FAQ</a>
+      <a href="#creator">About</a>
       <a href="#inbox" id="navInbox" hidden>Team inbox</a>
       <a class="pill" href="#share">Share yours</a>
     </nav>
@@ -508,7 +569,7 @@ footer a{color:var(--on-ink)}
               <div class="two">
                 <div class="field" data-f="name">
                   <label for="fName">Name <span class="req">*</span></label>
-                  <input type="text" id="fName" autocomplete="name" maxlength="60" placeholder="e.g. Priya Raman">
+                  <input type="text" id="fName" autocomplete="name" maxlength="60" placeholder="e.g. Saniya Khullar">
                   <p class="err">Please add your name so readers know who's speaking.</p>
                 </div>
                 <div class="field" data-f="email">
@@ -552,6 +613,12 @@ footer a{color:var(--on-ink)}
                 <label for="fText">Your testimonial <span class="req">*</span> <span class="counter" id="textCount">0 / 700</span></label>
                 <textarea id="fText" maxlength="700" placeholder="Please describe what you were trying to do, how NetREm helped, and what you discovered."></textarea>
                 <p class="err">Please write at least 20 characters so others can learn from your experience.</p>
+              </div>
+              <div class="field" data-f="link">
+                <label for="fLink">Project link <small style="font-weight:400;color:var(--muted)">(optional)</small></label>
+                <input type="url" id="fLink" maxlength="300" inputmode="url" placeholder="https://github.com/you/your-project">
+                <p class="hint">Please share a paper, repository, poster, or website where you used NetREm. It appears on your card.</p>
+                <p class="err">Please enter a full link, like https://github.com/you/project.</p>
               </div>
               <div class="field">
                 <span class="label" id="useLbl">I used NetREm for</span>
@@ -630,6 +697,9 @@ footer a{color:var(--on-ink)}
                 <div class="field"><label for="sEventName">Course or event name</label><input type="text" id="sEventName" maxlength="90" placeholder="e.g. BMI 826 guest lecture"></div>
                 <div class="field"><label for="sDate">Date attended</label><input type="text" id="sDate" maxlength="30" placeholder="e.g. March 2026"></div>
               </div>
+              <div class="field"><label for="sLocation">Location <small style="font-weight:400;color:var(--muted)">(optional)</small></label>
+                <input type="text" id="sLocation" maxlength="90" placeholder="e.g. Madison, WI, or Online">
+                <p class="hint">Please add the city, venue, or "Online". It's shown with featured quotes and on the insights map of sessions.</p></div>
             </fieldset>
             <fieldset>
               <legend>Your ratings</legend>
@@ -684,6 +754,49 @@ footer a{color:var(--on-ink)}
     </div>
   </section>
 
+
+  <!-- INSIGHTS -->
+  <section class="insights" id="insights" aria-labelledby="insTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="insTitle">Insights dashboard</h2>
+        <p>What the community is saying, in numbers and words. Everything here updates as new testimonials and seminar feedback arrive.</p>
+      </div>
+      <div class="kpis" id="kpis"></div>
+      <div class="cloud-card">
+        <div class="cloud-head">
+          <h3>Word cloud</h3>
+          <div class="cloud-tabs" role="tablist" aria-label="Word cloud source">
+            <button type="button" role="tab" aria-selected="true" data-src="all">Everything</button>
+            <button type="button" role="tab" aria-selected="false" data-src="t">Testimonials</button>
+            <button type="button" role="tab" aria-selected="false" data-src="s">Seminar takeaways</button>
+          </div>
+        </div>
+        <svg id="cloud" viewBox="0 0 900 380" role="img" aria-label="Word cloud of the most frequent words"></svg>
+        <p class="cloud-note" id="cloudNote">Bigger words appear more often. Please click a word to find testimonials that mention it.</p>
+      </div>
+      <div class="dash">
+        <div class="plot"><h3>Responses over time</h3><p class="sub">New testimonials and seminar responses per month</p><div id="plotTime"></div></div>
+        <div class="plot"><h3>Testimonial rating by role</h3><p class="sub">Average stars, with the number of reviews</p><div id="plotRole"></div></div>
+        <div class="plot"><h3>Seminar scores by session type</h3><p class="sub">Average overall, clarity, and relevance, out of 5</p><div id="plotSession"></div></div>
+        <div class="plot"><h3>Will attendees try NetREm?</h3><p class="sub">From all seminar and course responses</p><div id="plotIntent"></div></div>
+        <div class="plot"><h3>Fields and domains</h3><p class="sub">Where people apply NetREm, from testimonials</p><div id="plotField"></div></div>
+        <div class="plot"><h3>Where sessions happened</h3><p class="sub">Locations attendees reported</p><div id="plotLoc"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section id="cases" aria-labelledby="casesTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="casesTitle">Case studies</h2>
+        <p>Worked applications of NetREm, each as a PDF you can read online or download.</p>
+      </div>
+      <div class="cases-grid" id="casesGrid"></div>
+    </div>
+  </section>
+
   <!-- ABOUT -->
   <section id="about" aria-labelledby="aboutTitle">
     <div class="wrap about-grid">
@@ -710,6 +823,20 @@ footer a{color:var(--on-ink)}
     </div>
   </section>
 
+
+
+  <!-- CREATOR -->
+  <section id="creator" aria-labelledby="creatorTitle">
+    <div class="wrap creator-grid">
+      <div class="portrait" id="portrait"></div>
+      <div class="creator-copy">
+        <p class="kicker" id="creatorKicker"></p>
+        <h2 id="creatorTitle"></h2>
+        <div id="creatorBio"></div>
+        <div class="link-row" id="creatorLinks"></div>
+      </div>
+    </div>
+  </section>
 
   <!-- DOMAINS -->
   <section class="domains" id="domains" aria-labelledby="domTitle">
@@ -817,6 +944,7 @@ footer a{color:var(--on-ink)}
         <details><summary>Can I send feedback without posting it publicly?</summary><p>Yes. In the last step, uncheck "Post my testimonial on the public wall". Your message and any suggestions then go privately to the team.</p></details>
         <details><summary>Can I edit what I posted?</summary><p>On the live community board, opening the form again loads your submission and saving updates your existing card. If you need something removed, contact the NetREm team.</p></details>
         <details><summary>I'm a student new to this. Where do I start with NetREm?</summary><p>Start with the GitHub repository's README and the paper's overview figure, then try the dials above to build intuition for β and α. If something in the docs confused you, tell us in the private suggestions box.</p></details>
+        <details><summary>Can I collaborate on NetREm or contribute a case study?</summary><p>Yes, please. See <a href="#creator">Meet the creator</a> for ways to get in touch. Case studies from new fields are especially welcome.</p></details>
         <details><summary>How should I cite NetREm?</summary><p>Use the citation in the About section, which has a copy button, or the published paper linked there.</p></details>
       </div>
     </div>
@@ -835,7 +963,7 @@ footer a{color:var(--on-ink)}
         <button class="btn btn-plain" type="button" id="copyEmails">Copy update-list emails</button>
       </div>
       <div class="tbl-wrap"><table>
-        <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Institution</th><th>Rating</th><th>On wall</th><th>Updates</th><th>Private suggestions</th><th>Submitted</th><th></th></tr></thead>
+        <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Institution</th><th>Project link</th><th>Rating</th><th>On wall</th><th>Updates</th><th>Private suggestions</th><th>Submitted</th><th></th></tr></thead>
         <tbody id="inboxRows"></tbody>
       </table></div>
       <h3 class="inbox-h">Seminar and course feedback</h3>
@@ -868,7 +996,45 @@ footer a{color:var(--on-ink)}
    On claude.ai this is ignored: the built-in database is used.
    ========================================================= */
 const CONFIG = {
-  SHEETS_ENDPOINT: "https://script.google.com/macros/s/AKfycbwHd8IjOnFg4Fz-IMfzC2R0GpFN0Hhpu9Jeol0t50aeCEJQhiJmNGMEQfWHybUkmDZ3sQ/exec"
+  SHEETS_ENDPOINT: "https://script.google.com/a/macros/georgetown.edu/s/AKfycbxliYEOsVGAfoKrzh41rx3vfYXEZWId2JRCofILPPVZOXn3U1U1lSfdPRgVVppIHqxl/exec",
+
+  /* About the creator. Put your photo in the repo next to index.html and set its file name here. */
+  CREATOR: {
+    name: "Saniya Khullar",
+    photo: "saniya.jpg",
+    title: "Creator of NetREm",
+    bio: [
+      "Hi, I'm Saniya. I developed NetREm during my Ph.D. at the University of Wisconsin–Madison in the United States, where I worked on computational methods for understanding how transcription factors coordinate to regulate genes in specific cell types.",
+      "NetREm grew out of a simple question: when many predictors act together, which ones are really working as a team? That question turns out to matter far beyond gene regulation, which is why I built NetREm to be general purpose.",
+      "I am grateful to Xiang Huang, Ramesh Ramesh, John Svaren, and Daifeng Wang for their guidance and collaboration on the NetREm project. I also thank the many researchers, seminar attendees, users, and friends and family who have shared their feedback and insights.",
+      "I'm always looking to collaborate. If you have a dataset, a course, or an idea where NetREm could help, in biology or any other field, please reach out."
+    ],
+    email: "",                     // e.g. "you@example.com"; leave empty to hide the email button
+    links: [
+      { label: "GitHub", url: "https://github.com/SaniyaKhullar" },
+      { label: "NetREm paper", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12011367/" },
+      { label: "Personal website", url: "https://saniyakhullar.github.io/" },
+      { label: "LinkedIn", url: "https://linkedin.com/in/saniyak" },
+      { label: "Google Scholar", url: "https://scholar.google.com/citations?user=2YXiDBkAAAAJ&hl=en" }
+    ]
+  },
+
+  /* Case studies. Upload each PDF into a "case-studies" folder in your GitHub repo.
+     A card shows "Coming soon" until its PDF exists at that path. */
+  CASE_STUDIES: [
+    { title: "Schwann cell gene regulation", field: "Gene regulation", color: "--magenta",
+      summary: "Applying NetREm to single-cell data to find which transcription factors coordinate in Schwann cells.",
+      pdf: "case-studies/schwann-cells.pdf" },
+    { title: "Immune cell sub-types", field: "Immunology", color: "--cyan",
+      summary: "Comparing transcription factor coordination across immune cell sub-types.",
+      pdf: "case-studies/immune-cells.pdf" },
+    { title: "Alzheimer's disease: neurons and glia", field: "Neuroscience", color: "--violet",
+      summary: "Using cell-type coordination networks to study gene regulation in Alzheimer's disease.",
+      pdf: "case-studies/alzheimers.pdf" },
+    { title: "Beyond biology", field: "Any domain", color: "--amber",
+      summary: "A worked example of NetREm on non-biological data where predictors interact in a network.",
+      pdf: "case-studies/beyond-biology.pdf" }
+  ]
 };
 
 const ROLES = [
@@ -877,6 +1043,7 @@ const ROLES = [
   {k:"postdoc", label:"Postdoc", c:"--violet"},
   {k:"faculty", label:"Faculty or PI", c:"--cyan"},
   {k:"industry", label:"Industry scientist", c:"--lime"},
+  {k:"analyst", label:"Data analyst", c:"--sky"},
   {k:"other", label:"Other", c:"--coral"}
 ];
 const USES = [
@@ -889,7 +1056,7 @@ const USES = [
   {k:"beyond", label:"Beyond biology"}
 ];
 const RATE_WORDS = ["", "Needs work", "Okay", "Good", "Great", "Outstanding"];
-const roleOf = k => ROLES.find(r => r.k === k) || ROLES[5];
+const roleOf = k => ROLES.find(r => r.k === k) || ROLES[ROLES.length-1];
 const useOf = k => USES.find(u => u.k === k);
 const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const $ = s => document.querySelector(s);
@@ -898,6 +1065,13 @@ const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 function initials(n){ const p = String(n||"?").trim().split(/\s+/); return ((p[0]||"?")[0] + (p.length>1 ? p[p.length-1][0] : "")).toUpperCase(); }
 function fmtDate(t){ if(!t) return ""; try { return new Date(t).toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"}); } catch(e){ return ""; } }
 function hash(s){ let h = 2166136261; for (const ch of String(s)) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); } return (h>>>0); }
+function normLink(v){
+  v = String(v || "").trim(); if (!v) return "";
+  if (!/^[a-z][a-z0-9+.-]*:/i.test(v) && /^[\w-]+(\.[\w-]+)+/.test(v)) v = "https://" + v;
+  try { const u = new URL(v); return (u.protocol === "https:" || u.protocol === "http:") && u.hostname.includes(".") ? u.href : ""; } catch(e){ return ""; }
+}
+const safeLink = v => normLink(v);
+function linkHost(v){ try { return new URL(normLink(v)).hostname.replace(/^www\./, ""); } catch(e){ return ""; } }
 function toast(msg){ const t = $("#toast"); t.textContent = msg; t.classList.add("on"); clearTimeout(toast._t); toast._t = setTimeout(()=>t.classList.remove("on"), 3200); }
 
 /* ---------------- state ---------------- */
@@ -933,7 +1107,7 @@ const Store = {
         renderAll();
       }, () => {});
       const flat = snap => snap.docs.filter(d => d.exists).flatMap(d => ((d.data().entries) || []).map(e => ({ ...e, uid:d.id })));
-      db.collection("seminar").onSnapshot(snap => { S.seminar = flat(snap); renderSeminar(); renderInbox(); }, () => {});
+      db.collection("seminar").onSnapshot(snap => { S.seminar = flat(snap); renderSeminar(); renderInsights(); renderInbox(); }, () => {});
       if (S.isOwner) db.collection("seminarPrivate").onSnapshot(snap => { S.semPrivate = flat(snap); renderInbox(); }, () => {});
       if (S.isOwner) {
         db.collection("contacts").onSnapshot(snap => {
@@ -960,9 +1134,12 @@ const Store = {
     try {
       const r = await fetch(CONFIG.SHEETS_ENDPOINT + "?action=list", { method:"GET" });
       const j = await r.json();
+      if (!j.ok) throw new Error(j.error || "The sheet returned an error.");
       S.items = Array.isArray(j.items) ? j.items : [];
       S.seminar = Array.isArray(j.seminar) ? j.seminar : [];
-    } catch(e) { toast("Couldn't load testimonials from the sheet. Check the endpoint URL."); }
+      S.backendOld = !Array.isArray(j.seminar);
+      S.sheetError = "";
+    } catch(e) { S.sheetError = String(e.message || e); toast("Couldn't reach the Google Sheet. Please check the endpoint URL and deployment access."); }
   },
   demoLoad(){ try { return JSON.parse(localStorage.getItem("netrem-voices-demo")) || {items:[],contacts:[],seminar:[],semPrivate:[]}; } catch(e){ return {items:[],contacts:[],seminar:[],semPrivate:[]}; } },
   demoSave(){ try { localStorage.setItem("netrem-voices-demo", JSON.stringify({items:S.items, contacts:S.contacts, seminar:S.seminar, semPrivate:S.semPrivate})); } catch(e){} },
@@ -982,7 +1159,7 @@ const Store = {
       const id = "s" + now.toString(36) + Math.random().toString(36).slice(2,7);
       const r = await fetch(CONFIG.SHEETS_ENDPOINT, { method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"},
         body: JSON.stringify({ action:"submit", id, ...pub, ...priv, website: $("#fWebsite").value }) });
-      const j = await r.json().catch(() => ({ok:false}));
+      const j = await r.json().catch(() => ({ ok:false, error:"The sheet didn't return JSON. Please check that the deployment access is set to Anyone." }));
       if (!j.ok) throw new Error(j.error || "submit_failed");
       await Store.refreshSheets();
       return id;
@@ -1007,7 +1184,7 @@ const Store = {
     if (S.mode === "sheets") {
       const r = await fetch(CONFIG.SHEETS_ENDPOINT, { method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"},
         body: JSON.stringify({ action:"seminar", id, ...pub, ...priv, website: $("#sWebsite").value }) });
-      const j = await r.json().catch(() => ({ok:false}));
+      const j = await r.json().catch(() => ({ ok:false, error:"The sheet didn't return JSON. Please check that the deployment access is set to Anyone." }));
       if (!j.ok) throw new Error(j.error || "submit_failed");
       await Store.refreshSheets(); return id;
     }
@@ -1194,6 +1371,7 @@ function cardHTML(it, opts = {}){
     <p class="txt ${long && !opts.full ? "clamp" : ""}">${esc(it.text || (opts.preview ? "Your testimonial will appear here as you type." : ""))}</p>
     ${long && !opts.preview ? `<button class="more" type="button" aria-expanded="false">Read more</button>` : ""}
     ${(it.uses||[]).length || it.field ? `<div class="tags">${it.field ? `<span class="tag field">${esc(it.field)}</span>` : ""}${(it.uses||[]).map(u => useOf(u) ? `<span class="tag">${esc(useOf(u).label)}</span>` : "").join("")}</div>` : ""}
+    ${safeLink(it.link) ? `<a class="proj" href="${esc(safeLink(it.link))}" target="_blank" rel="noopener nofollow ugc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M10 14L20 4M14 4h6v6M20 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V5a1 1 0 011-1h5"/></svg>View project <span>${esc(linkHost(it.link))}</span></a>` : ""}
     <div class="who"><span class="av" aria-hidden="true">${esc(initials(it.name || "You"))}</span><div><b>${esc(it.name || "Your name")}</b><small>${sub || "Your role"}</small></div></div>
   </article>`;
 }
@@ -1294,12 +1472,12 @@ function renderInbox(){
   $("#ownerStats").innerHTML = `<div><b>${C.length}</b><span>submissions</span></div><div><b>${C.filter(c => c.updates).length}</b><span>want updates</span></div><div><b>${C.filter(c => (c.suggestions||"").trim()).length}</b><span>left suggestions</span></div><div><b>${C.filter(c => !c.public).length}</b><span>private only</span></div>`;
   $("#inboxRows").innerHTML = C.length ? C.map(c => `<tr>
     <td><b>${esc(c.name)}</b></td><td><a href="mailto:${esc(c.email)}">${esc(c.email)}</a></td><td>${esc(roleOf(c.role).label)}</td>
-    <td>${esc(c.institution)}</td><td>${Number(c.rating)||""}★</td>
+    <td>${esc(c.institution)}</td><td>${safeLink(c.link) ? `<a href="${esc(safeLink(c.link))}" target="_blank" rel="noopener nofollow">${esc(linkHost(c.link))}</a>` : ""}</td><td>${Number(c.rating)||""}★</td>
     <td><span class="badge ${onWall.has(c.id) ? "y" : "n"}">${onWall.has(c.id) ? "Yes" : "No"}</span></td>
     <td><span class="badge ${c.updates ? "y" : "n"}">${c.updates ? "Yes" : "No"}</span></td>
     <td style="max-width:280px">${esc(c.suggestions)}</td><td>${esc(fmtDate(c.updatedAt || c.createdAt))}</td>
     <td>${onWall.has(c.id) ? `<button class="mini" type="button" data-hide="${esc(c.id)}">Hide from wall</button>` : ""}</td></tr>`).join("")
-    : `<tr><td colspan="10" style="color:var(--muted)">No submissions yet. When someone shares, their details appear here.</td></tr>`;
+    : `<tr><td colspan="11" style="color:var(--muted)">No submissions yet. When someone shares, their details appear here.</td></tr>`;
 }
 function renderSemInbox(){
   const C = [...S.semPrivate].sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
@@ -1308,7 +1486,7 @@ function renderSemInbox(){
   $("#semOwnerStats").innerHTML = `<div><b>${C.length}</b><span>responses</span></div><div><b>${avg("overall")}</b><span>avg overall</span></div><div><b>${avg("clarity")}</b><span>avg clarity</span></div><div><b>${C.filter(e => (e.questions||"").trim()).length}</b><span>asked questions</span></div><div><b>${C.filter(e => e.updates).length}</b><span>want updates</span></div>`;
   $("#semRows").innerHTML = C.length ? C.map(e => `<tr>
     <td><b>${esc(e.realName || e.name)}</b></td><td><a href="mailto:${esc(e.email)}">${esc(e.email)}</a></td><td>${esc(roleOf(e.role).label)}</td>
-    <td>${esc(evtOf(e.eventType).label)}${e.eventName ? "<br><small>" + esc(e.eventName) + "</small>" : ""}${e.date ? "<br><small>" + esc(e.date) + "</small>" : ""}</td>
+    <td>${esc(evtOf(e.eventType).label)}${e.eventName ? "<br><small>" + esc(e.eventName) + "</small>" : ""}${e.date ? "<br><small>" + esc(e.date) + "</small>" : ""}${e.location ? "<br><small>" + esc(e.location) + "</small>" : ""}</td>
     <td>${Number(e.overall)||""}★</td><td>${Number(e.clarity)||""}/5</td><td>${Number(e.relevance)||""}/5</td><td>${esc(intentOf(e.intent).label)}</td>
     <td style="max-width:240px">${esc(e.learned)}</td><td style="max-width:220px">${esc(e.unclear)}</td><td>${esc(e.apply)}</td>
     <td>${(e.more||[]).map(k => esc(moreOf(k).label)).join(", ")}</td><td style="max-width:220px">${esc(e.questions)}</td>
@@ -1325,7 +1503,7 @@ $("#semRows").addEventListener("click", async e => {
 });
 $("#exportSemCsv").addEventListener("click", async () => {
   if (!S.semPrivate.length) return toast("Nothing to export yet");
-  const cols = ["realName","email","role","institution","field","eventType","eventName","date","overall","clarity","relevance","intent","learned","unclear","apply","more","questions","share","anonymous","updates","createdAt"];
+  const cols = ["realName","email","role","institution","field","eventType","eventName","date","location","overall","clarity","relevance","intent","learned","unclear","apply","more","questions","share","anonymous","updates","createdAt"];
   const q = v => `"${String(v ?? "").replace(/"/g,'""')}"`;
   const data = [cols.join(","), ...S.semPrivate.map(e => cols.map(k => k === "more" ? q((e.more||[]).map(m => moreOf(m).label).join("; ")) : k === "role" ? q(roleOf(e.role).label) : k === "eventType" ? q(evtOf(e.eventType).label) : k === "intent" ? q(intentOf(e.intent).label) : k === "createdAt" ? q(e.createdAt ? new Date(e.createdAt).toISOString() : "") : q(e[k])).join(","))].join("\n");
   await saveFile(`netrem-seminar-feedback-${new Date().toISOString().slice(0,10)}.csv`, data);
@@ -1340,7 +1518,7 @@ $("#inboxRows").addEventListener("click", async e => {
   try { await Store.hide(b.dataset.hide); toast("Hidden from the wall"); } catch(err){ toast("Couldn't hide it. Try again."); }
 });
 function csv(){
-  const cols = ["name","email","role","institution","field","rating","headline","text","uses","public","updates","suggestions","createdAt"];
+  const cols = ["name","email","role","institution","field","rating","headline","text","link","uses","public","updates","suggestions","createdAt"];
   const q = v => `"${String(v ?? "").replace(/"/g,'""')}"`;
   return [cols.join(","), ...S.contacts.map(c => cols.map(k => k === "uses" ? q((c.uses||[]).map(u => useOf(u)?.label).join("; ")) : k === "role" ? q(roleOf(c.role).label) : k === "createdAt" ? q(c.createdAt ? new Date(c.createdAt).toISOString() : "") : q(c[k])).join(","))].join("\n");
 }
@@ -1367,8 +1545,13 @@ function renderMode(){
   else if (S.mode === "claude" && S.mine) n.innerHTML = `<div class="notice info">Welcome back. You've already shared, so saving here updates your existing card.</div>`;
   else n.innerHTML = "";
   $("#next").disabled = S.mode === "readonly" || (S.mode === "claude" && !S.canWrite);
+  if (S.mode === "sheets" && (S.sheetError || S.backendOld)) {
+    p.classList.remove("live");
+    t.textContent = S.sheetError ? "Google Sheet not reachable: " + S.sheetError : "Sheet connected, but Code.gs is an old version. Please redeploy it as a New version.";
+    n.innerHTML = `<div class="notice">${S.sheetError ? "This page can't reach the Google Sheet right now, so submissions won't save. Please check the endpoint URL and that the Apps Script deployment allows Anyone." : "The Google Sheet backend is running an older Code.gs that doesn't accept seminar feedback. Please paste the latest Code.gs and redeploy it as a New version."}</div>`;
+  }
 }
-function renderAll(){ buildGraph(); renderHero(); renderPulse(); renderSpot(); renderWall(); if (typeof renderSeminar === "function" && window.SEM_READY) renderSeminar(); renderInbox(); renderPreview(); }
+function renderAll(){ buildGraph(); renderHero(); renderPulse(); renderSpot(); renderWall(); if (window.SEM_READY){ renderSeminar(); renderInsights(); } renderInbox(); renderPreview(); }
 
 /* ---------------- form ---------------- */
 const F = { step:0, role:"", rating:0, uses:new Set() };
@@ -1382,12 +1565,12 @@ $("#useChips").addEventListener("click", e => { const b = e.target.closest(".chi
 $("#rate").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { setRating(Number(b.dataset.n)); clearErr("rating"); } });
 $("#rate").addEventListener("mouseover", e => { const b = e.target.closest("button"); if (!b) return; const n = Number(b.dataset.n); document.querySelectorAll("#rate button").forEach(x => x.classList.toggle("lit", Number(x.dataset.n) <= n)); });
 $("#rate").addEventListener("mouseleave", () => setRating(F.rating));
-["#fName","#fInst","#fField","#fHead","#fText","#fShowInst"].forEach(s => $(s).addEventListener("input", () => { renderPreview(); counters(); }));
+["#fName","#fInst","#fField","#fHead","#fText","#fShowInst","#fLink"].forEach(s => $(s).addEventListener("input", () => { renderPreview(); counters(); }));
 ["#fName","#fEmail","#fText"].forEach(s => $(s).addEventListener("input", e => clearErr(e.target.closest(".field").dataset.f)));
 $("#fAgree").addEventListener("change", () => clearErr("agree"));
 $("#fPublic").addEventListener("change", () => { $("#next").textContent = F.step === 2 ? submitLabel() : "Continue"; });
 function counters(){ $("#headCount").textContent = `${$("#fHead").value.length} / 80`; $("#textCount").textContent = `${$("#fText").value.length} / 700`; }
-function draft(){ return { name:$("#fName").value.trim(), role:F.role, institution: $("#fShowInst").checked ? $("#fInst").value.trim() : "", rating:F.rating, field:$("#fField").value.trim(), headline:$("#fHead").value.trim(), text:$("#fText").value.trim(), uses:[...F.uses] }; }
+function draft(){ return { name:$("#fName").value.trim(), role:F.role, institution: $("#fShowInst").checked ? $("#fInst").value.trim() : "", rating:F.rating, field:$("#fField").value.trim(), headline:$("#fHead").value.trim(), text:$("#fText").value.trim(), uses:[...F.uses], link: normLink($("#fLink").value) }; }
 function renderPreview(){ const d = draft(); $("#preview").innerHTML = cardHTML({ ...d, id:"preview", rating:d.rating || 0, createdAt: Date.now() }, { preview:true, full:true }); }
 function clearErr(f){ const el = document.querySelector(`.field[data-f="${f}"]`); if (el) el.classList.remove("bad"); }
 function bad(f){ const el = document.querySelector(`.field[data-f="${f}"]`); el.classList.add("bad"); return el; }
@@ -1401,6 +1584,7 @@ function validate(step){
   if (step === 1){
     if (!F.rating) mark("rating");
     if ($("#fText").value.trim().length < 20) mark("text");
+    if ($("#fLink").value.trim() && !normLink($("#fLink").value)) mark("link");
   }
   if (step === 2 && !$("#fAgree").checked) mark("agree");
   if (first){ const i = first.querySelector("input,textarea,button"); i && i.focus(); }
@@ -1424,7 +1608,7 @@ $("#next").addEventListener("click", async () => {
   if ($("#fWebsite").value) return; // bot
   const btn = $("#next"); btn.disabled = true; const label = btn.textContent; btn.textContent = "Saving…";
   const d = draft();
-  const pub = { name:d.name, role:d.role, institution:d.institution, field:d.field, rating:d.rating, headline:d.headline, text:d.text, uses:d.uses };
+  const pub = { name:d.name, role:d.role, institution:d.institution, field:d.field, rating:d.rating, headline:d.headline, text:d.text, uses:d.uses, link:d.link };
   const priv = { email:$("#fEmail").value.trim(), institution:$("#fInst").value.trim(), showInstitution:$("#fShowInst").checked, public:$("#fPublic").checked, updates:$("#fUpdates").checked, suggestions:$("#fSuggest").value.trim() };
   try {
     const wasEdit = !!S.mine && S.mode === "claude";
@@ -1435,7 +1619,8 @@ $("#next").addEventListener("click", async () => {
     toast(wasEdit ? "Changes saved" : priv.public ? "Posted to the wall" : "Sent to the team");
     showDone(pub.name, priv.public, id, wasEdit);
   } catch(err){
-    toast(S.mode === "sheets" ? "Couldn't reach the sheet. Check your connection and try again." : "Couldn't save. You may need contributor access to post here.");
+    toast(S.mode === "sheets" ? "Couldn't save to the sheet: " + (err.message || "please check the deployment.") : "Couldn't save. You may need contributor access to post here.");
+    console.error("Testimonial submit failed:", err);
   } finally { btn.disabled = false; btn.textContent = label; }
 });
 function showDone(name, isPublic, id, wasEdit){
@@ -1453,7 +1638,7 @@ function showDone(name, isPublic, id, wasEdit){
 }
 function resetForm(){ $("#form").reset(); F.uses.clear(); setRole(""); setRating(0); document.querySelectorAll("#useChips .chip").forEach(c => c.setAttribute("aria-pressed","false")); $("#fShowInst").checked = true; $("#fPublic").checked = true; counters(); renderPreview(); }
 function prefill(m){
-  $("#fName").value = m.name || ""; $("#fEmail").value = m.email || ""; $("#fInst").value = m.institution || ""; $("#fField").value = m.field || "";
+  $("#fName").value = m.name || ""; $("#fEmail").value = m.email || ""; $("#fInst").value = m.institution || ""; $("#fField").value = m.field || ""; $("#fLink").value = m.link || "";
   $("#fShowInst").checked = m.showInstitution !== false; $("#fHead").value = m.headline || ""; $("#fText").value = m.text || "";
   $("#fSuggest").value = m.suggestions || ""; $("#fPublic").checked = m.public !== false; $("#fUpdates").checked = !!m.updates;
   if (m.role) setRole(m.role); if (m.rating) setRating(Number(m.rating));
@@ -1529,21 +1714,22 @@ $("#sSubmit").addEventListener("click", async () => {
   if ($("#sWebsite").value) return;
   const btn = $("#sSubmit"); btn.disabled = true; btn.textContent = "Sending…";
   const share = $("#sShare").checked, anon = $("#sAnon").checked, name = $("#sName").value.trim();
-  const pub = { role:SF.role, eventType:SF.event, overall:SF.overall, clarity:SF.clarity, relevance:SF.relevance, intent:SF.intent,
+  const pub = { role:SF.role, eventType:SF.event, location:$("#sLocation").value.trim(), overall:SF.overall, clarity:SF.clarity, relevance:SF.relevance, intent:SF.intent,
     quote: share ? $("#sLearned").value.trim() : "", name: share && !anon ? name : "" };
   const priv = { realName:name, email:$("#sEmail").value.trim(), institution:$("#sInst").value.trim(), field:$("#sField").value.trim(),
     eventName:$("#sEventName").value.trim(), date:$("#sDate").value.trim(), learned:$("#sLearned").value.trim(), unclear:$("#sUnclear").value.trim(),
     apply:$("#sApply").value.trim(), more:[...SF.more], questions:$("#sQuestions").value.trim(), share, anonymous:anon, updates:$("#sUpdates").checked };
   try {
     await Store.submitSeminar(pub, priv);
-    if (S.mode !== "claude") { renderSeminar(); renderInbox(); }
+    if (S.mode !== "claude") { renderSeminar(); renderInsights(); renderInbox(); }
     celebrate(btn); toast("Feedback sent");
     $("#semForm").hidden = true; const d = $("#semDone"); d.hidden = false;
     d.innerHTML = `<div class="done-state"><h3>Thank you, ${esc(name.split(" ")[0])}.</h3><p>Your feedback reached the NetREm team.${priv.questions ? " We'll reply to your question by email." : ""} When you're ready to try the tool, the GitHub repository is the best place to start.</p>
       <div class="cta-row"><a class="btn btn-dark" href="https://github.com/SaniyaKhullar/NetREm" target="_blank" rel="noopener">Open NetREm on GitHub</a><button class="btn btn-plain" type="button" id="semAgain">Give feedback on another session</button></div></div>`;
     $("#semAgain").onclick = () => { semReset(); d.hidden = true; $("#semForm").hidden = false; };
   } catch(err){
-    toast(S.mode === "sheets" ? "Couldn't reach the sheet. Please check your connection and try again." : "Couldn't send. You may need contributor access to post here.");
+    toast(S.mode === "sheets" ? "Couldn't save to the sheet: " + (err.message || "please check the deployment.") : "Couldn't send. You may need contributor access to post here.");
+    console.error("Seminar submit failed:", err);
   } finally { btn.disabled = false; btn.textContent = "Send feedback"; }
 });
 function semReset(){
@@ -1562,13 +1748,179 @@ function renderSeminar(){
     <div class="keys">${ic.map(([i,c]) => `<div><i style="background:var(${i.c})"></i>${i.label}<em>${Math.round(c/n*100)}%</em></div>`).join("")}</div>` : "";
   const Q = E.filter(e => e.quote).sort((a,b) => (b.createdAt||0) - (a.createdAt||0)).slice(0, 8);
   $("#semQuotes").innerHTML = Q.length ? Q.map(e => `<div class="quote" style="border-left:5px solid var(${roleOf(e.role).c})"><span class="evt">${esc(evtOf(e.eventType).label)}</span>
-      <p>“${esc(e.quote)}”</p><div class="meta">${esc(e.name || "A session attendee")}, ${esc(roleOf(e.role).label)}${e.createdAt ? ", " + esc(fmtDate(e.createdAt)) : ""}</div></div>`).join("")
+      <p>“${esc(e.quote)}”</p><div class="meta">${esc(e.name || "A session attendee")}, ${esc(roleOf(e.role).label)}${e.location ? ", " + esc(e.location) : ""}${e.createdAt ? ", " + esc(fmtDate(e.createdAt)) : ""}</div></div>`).join("")
     : `<div class="wall-empty" style="padding:2rem 1.25rem"><h3>No feedback yet</h3><p>Attended a NetREm lecture or seminar? Please be the first to share what you took away.</p></div>`;
   const nt = $("#semNotice");
   if (S.mode === "demo") nt.innerHTML = `<div class="notice">Demo mode. Feedback is saved only in this browser. Please add your Google Sheets endpoint to collect it for real.</div>`;
   else if (S.mode === "readonly" || (S.mode === "claude" && !S.canWrite)) nt.innerHTML = `<div class="notice info">You can read feedback here, but sending it needs contributor access to this page. Please ask the NetREm team for an invite.</div>`;
   else nt.innerHTML = "";
   $("#sSubmit").disabled = S.mode === "readonly" || (S.mode === "claude" && !S.canWrite);
+}
+
+
+/* ---------------- insights: KPIs, word cloud, plots ---------------- */
+const STOP = new Set("a about above after again against all also am an and any are as at be because been before being below between both but by can could did do does doing down during each even few for from further get got had has have having he her here hers him his how i if in into is it its itself just let like lot lots made make many me more most much my myself new no nor not now of off on once one only or other our ours out over own really same see she should so some such than that the their them then there these they thing things this those through to too under until up us use used using very want was way we well were what when where which while who whom why will with would yet you your yours ive im its dont didnt cant also able across around get gets give gave helped help helps helpful learned learn really still since every much many great good better best lot".split(" "));
+const CLOUD_EXTRA = new Set(["netrem"]);
+let cloudSrc = "all";
+function wordCounts(texts){
+  const m = new Map();
+  texts.forEach(t => String(t || "").toLowerCase().replace(/[’']/g, "").split(/[^a-z0-9\-–]+/).forEach(w => {
+    w = w.replace(/^[-–]+|[-–]+$/g, "");
+    if (w.length < 3 || STOP.has(w) || CLOUD_EXTRA.has(w) || /^\d+$/.test(w)) return;
+    m.set(w, (m.get(w) || 0) + 1);
+  }));
+  return [...m.entries()].sort((a,b) => b[1]-a[1]).slice(0, 70);
+}
+const measureCtx = document.createElement("canvas").getContext("2d");
+function renderCloud(){
+  const tTexts = S.items.map(i => `${i.headline || ""} ${i.text || ""} ${i.field || ""}`);
+  const sTexts = S.seminar.filter(e => e.quote).map(e => e.quote);
+  const texts = cloudSrc === "t" ? tTexts : cloudSrc === "s" ? sTexts : [...tTexts, ...sTexts];
+  const words = wordCounts(texts), svg = $("#cloud"), W = 900, H = 380;
+  if (words.length < 3){
+    svg.innerHTML = `<text x="${W/2}" y="${H/2 - 10}" text-anchor="middle" fill="#AEB3E0" font-family="Bricolage Grotesque, system-ui, sans-serif" font-size="26" font-weight="700">The cloud grows with every response</text><text x="${W/2}" y="${H/2 + 24}" text-anchor="middle" fill="#AEB3E0" font-family="Atkinson Hyperlegible, system-ui, sans-serif" font-size="16">Please check back once a few testimonials or seminar takeaways arrive.</text>`;
+    return;
+  }
+  const max = words[0][1], min = words[words.length-1][1];
+  const pal = ["#FF62A8","#3CCBE6","#FFBE3D","#6ED46A","#9C85FF","#FF7E6B","#5AA9FF","#F2F3FF"];
+  const placed = []; let out = "";
+  const hit = (b) => placed.some(p => !(b.x2 < p.x1 || b.x1 > p.x2 || b.y2 < p.y1 || b.y1 > p.y2));
+  words.forEach(([w,c], idx) => {
+    const t = max === min ? .5 : Math.sqrt((c - min) / (max - min));
+    const fs = Math.round(15 + t * 48), weight = t > .5 ? 800 : 700;
+    measureCtx.font = `${weight} ${fs}px 'Bricolage Grotesque', system-ui, sans-serif`;
+    const ww = measureCtx.measureText(w).width + 6, hh = fs * 0.95;
+    for (let k = 0; k < 900; k++){
+      const ang = k * 0.32, rad = 3.2 * ang;
+      const x = W/2 + rad * Math.cos(ang) * 1.6 - ww/2, y = H/2 + rad * Math.sin(ang) * 0.8;
+      const b = { x1:x, x2:x+ww, y1:y-hh*0.8, y2:y+hh*0.25 };
+      if (b.x1 < 4 || b.x2 > W-4 || b.y1 < 4 || b.y2 > H-4) continue;
+      if (!hit(b)){ placed.push(b);
+        out += `<text x="${(x+3).toFixed(1)}" y="${y.toFixed(1)}" font-family="Bricolage Grotesque, system-ui, sans-serif" font-weight="${weight}" font-size="${fs}" fill="${pal[idx % pal.length]}" data-w="${esc(w)}"><title>${esc(w)}: ${c} ${c === 1 ? "mention" : "mentions"}</title>${esc(w)}</text>`;
+        break; }
+    }
+  });
+  svg.innerHTML = out;
+}
+document.querySelector(".cloud-tabs").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return; cloudSrc = b.dataset.src;
+  document.querySelectorAll(".cloud-tabs button").forEach(x => x.setAttribute("aria-selected", String(x === b))); renderCloud();
+});
+$("#cloud").addEventListener("click", e => {
+  const t = e.target.closest("text[data-w]"); if (!t) return;
+  const w = t.dataset.w; S.filters.q = w; $("#q").value = w; renderWall(); $("#wall").scrollIntoView();
+  toast(`Showing testimonials that mention "${w}"`);
+});
+
+function hbarsHTML(rows, opts = {}){
+  if (!rows.length) return `<p class="empty-note">${opts.empty || "Please check back once responses arrive."}</p>`;
+  const mx = Math.max(...rows.map(r => r.v), opts.max || 0, .0001);
+  return rows.map(r => `<div class="use-row"><div class="lbl"><span>${esc(r.label)}</span><em>${opts.fmt ? opts.fmt(r) : r.v}</em></div><div class="track"><i style="width:${r.v/mx*100}%;background:${r.color || "linear-gradient(90deg,var(--cyan),var(--violet))"}"></i></div></div>`).join("");
+}
+function columnsSVG(labels, series, opts = {}){
+  const W = 520, H = 230, L = 34, B = 34, T = 14, cw = (W - L) / Math.max(1, labels.length);
+  const totals = labels.map((_,i) => opts.stack ? series.reduce((t,s) => t + (s.values[i]||0), 0) : Math.max(...series.map(s => s.values[i]||0)));
+  const mx = opts.max || Math.max(1, ...totals), ticks = opts.max ? [0, opts.max/2, opts.max] : [0, Math.ceil(mx/2), Math.ceil(mx)];
+  const top = opts.max || ticks[2] || 1, y = v => T + (H - T - B) * (1 - v / top);
+  let g = ticks.map(t => `<line class="grid" x1="${L}" x2="${W}" y1="${y(t)}" y2="${y(t)}"/><text x="${L-6}" y="${y(t)+4}" text-anchor="end">${t}</text>`).join("");
+  labels.forEach((lab,i) => {
+    const w = Math.min(cw*0.7, opts.stack ? 56 : 120), x0 = L + i*cw + (cw - w)/2;
+    if (opts.stack){ let acc = 0; series.forEach(s => { const v = s.values[i]||0; if (!v) return; g += `<rect x="${x0}" y="${y(acc+v)}" width="${w}" height="${y(acc)-y(acc+v)}" rx="3" fill="${s.color}"><title>${esc(lab)}, ${esc(s.name)}: ${v}</title></rect>`; acc += v; });
+      if (totals[i]) g += `<text class="val" x="${x0 + w/2}" y="${y(totals[i]) - 5}" text-anchor="middle">${totals[i]}</text>`; }
+    else { const bw = w / series.length; series.forEach((s,k) => { const v = s.values[i]||0; g += `<rect x="${x0 + k*bw}" y="${y(v)}" width="${bw-2}" height="${y(0)-y(v)}" rx="3" fill="${s.color}"><title>${esc(lab)}, ${esc(s.name)}: ${v ? v.toFixed(1) : "no data"}</title></rect>`; }); }
+    g += `<text x="${x0 + w/2}" y="${H - B + 18}" text-anchor="middle">${esc(lab)}</text>`;
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opts.label || "chart")}">${g}</svg>` +
+    `<div class="plot-legend">${series.map(s => `<span><i style="background:${s.color}"></i>${esc(s.name)}</span>`).join("")}</div>`;
+}
+function donutSVG(parts){
+  const total = parts.reduce((t,p) => t + p.v, 0); if (!total) return `<p class="empty-note">Please check back once seminar responses arrive.</p>`;
+  let a0 = -Math.PI/2, g = "";
+  parts.forEach(p => { if (!p.v) return; const a1 = a0 + p.v/total*Math.PI*2, large = a1 - a0 > Math.PI ? 1 : 0, R = 80, r = 50;
+    const P = (a, rr) => `${100 + rr*Math.cos(a)} ${100 + rr*Math.sin(a)}`;
+    g += p.v === total ? `<circle cx="100" cy="100" r="65" fill="none" stroke="${p.color}" stroke-width="30"/>`
+      : `<path d="M${P(a0,R)} A${R} ${R} 0 ${large} 1 ${P(a1,R)} L${P(a1,r)} A${r} ${r} 0 ${large} 0 ${P(a0,r)}Z" fill="${p.color}"><title>${esc(p.label)}: ${p.v}</title></path>`;
+    a0 = a1; });
+  const tryPct = Math.round(parts.filter(p => p.k === "using" || p.k === "soon").reduce((t,p) => t + p.v, 0) / total * 100);
+  g += `<text x="100" y="100" text-anchor="middle" class="val" style="font-size:26px;font-family:var(--display)">${tryPct}%</text><text x="100" y="120" text-anchor="middle">will try it</text>`;
+  return `<div class="donut-wrap"><svg viewBox="0 0 200 200">${g}</svg><div class="keys">${parts.filter(p => p.v).map(p => `<div><i style="background:${p.color}"></i>${esc(p.label)}<em>${Math.round(p.v/total*100)}%</em></div>`).join("")}</div></div>`;
+}
+function tally(list){ const m = new Map(); list.forEach(v => { v = String(v||"").trim(); if (!v) return; const k = v.toLowerCase(); const cur = m.get(k) || { label:v, v:0 }; cur.v++; m.set(k, cur); }); return [...m.values()].sort((a,b) => b.v - a.v); }
+function renderInsights(){
+  const T = S.items, E = S.seminar;
+  const avgT = T.length ? (T.reduce((t,i) => t + (Number(i.rating)||0), 0) / T.length).toFixed(1) : "–";
+  const avgS = E.length ? (E.reduce((t,e) => t + (Number(e.overall)||0), 0) / E.length).toFixed(1) : "–";
+  const tryPct = E.length ? Math.round(E.filter(e => e.intent === "using" || e.intent === "soon").length / E.length * 100) + "%" : "–";
+  const inst = new Set(T.map(i => (i.institution||"").trim().toLowerCase()).filter(Boolean)).size;
+  const locs = new Set(E.map(e => (e.location||"").trim().toLowerCase()).filter(Boolean)).size;
+  $("#kpis").innerHTML = [[T.length,"testimonials"],[E.length,"seminar responses"],[avgT,"avg testimonial stars"],[avgS,"avg seminar rating"],[tryPct,"attendees will try it"],[inst + locs,"institutions and locations"]]
+    .map(([b,l]) => `<div><b>${b}</b><span>${l}</span></div>`).join("");
+  renderCloud();
+  // time
+  const all = [...T.map(i => ["t", i.createdAt]), ...E.map(e => ["s", e.createdAt])].filter(x => x[1]);
+  if (!all.length) $("#plotTime").innerHTML = `<p class="empty-note">Please check back once responses arrive.</p>`;
+  else {
+    const now = new Date(), first = new Date(Math.min(...all.map(x => x[1]))), months = [];
+    let d = new Date(first.getFullYear(), first.getMonth(), 1); const end = new Date(now.getFullYear(), now.getMonth(), 1);
+    while (d <= end) { months.push(new Date(d)); d.setMonth(d.getMonth()+1); }
+    const M = months.slice(-12), key = dt => dt.getFullYear()*12 + dt.getMonth();
+    const cnt = src => M.map(m => all.filter(x => x[0] === src && key(new Date(x[1])) === key(m)).length);
+    $("#plotTime").innerHTML = columnsSVG(M.map(m => m.toLocaleDateString(undefined, { month:"short" }) + (M.length > 6 && m.getMonth() !== 0 ? "" : " " + String(m.getFullYear()).slice(2))),
+      [{ name:"Testimonials", color:cssVar("--magenta"), values:cnt("t") }, { name:"Seminar feedback", color:cssVar("--cyan"), values:cnt("s") }], { stack:true, label:"Responses per month" });
+  }
+  // role
+  const byRole = ROLES.map(r => { const L = T.filter(i => roleOf(i.role).k === r.k); return { label:r.label, n:L.length, v: L.length ? L.reduce((t,i) => t + (Number(i.rating)||0), 0) / L.length : 0, color:`var(${r.c})` }; }).filter(r => r.n);
+  $("#plotRole").innerHTML = hbarsHTML(byRole, { max:5, fmt: r => `${r.v.toFixed(1)}★ (${r.n})` });
+  // session
+  const sess = EVENTS.filter(ev => E.some(e => e.eventType === ev.k));
+  const avgBy = (k, f) => { const L = E.filter(e => e.eventType === k); return L.length ? L.reduce((t,e) => t + (Number(e[f])||0), 0) / L.length : 0; };
+  $("#plotSession").innerHTML = sess.length ? columnsSVG(sess.map(ev => ev.label.split(" ")[0]), [
+    { name:"Overall", color:cssVar("--amber"), values: sess.map(ev => avgBy(ev.k, "overall")) },
+    { name:"Clarity", color:cssVar("--cyan"), values: sess.map(ev => avgBy(ev.k, "clarity")) },
+    { name:"Relevance", color:cssVar("--violet"), values: sess.map(ev => avgBy(ev.k, "relevance")) }], { max:5, label:"Seminar scores by session type" })
+    : `<p class="empty-note">Please check back once seminar responses arrive.</p>`;
+  $("#plotIntent").innerHTML = donutSVG(INTENTS.map(i => ({ k:i.k, label:i.label, v:E.filter(e => e.intent === i.k).length, color:cssVar(i.c) })));
+  const fields = tally(T.map(i => i.field)).slice(0, 8);
+  const useFallback = USES.map(u => ({ label:u.label, v:T.filter(i => (i.uses||[]).includes(u.k)).length })).filter(x => x.v).sort((a,b) => b.v - a.v);
+  $("#plotField").innerHTML = fields.length ? hbarsHTML(fields) : hbarsHTML(useFallback, { empty:"Please check back once testimonials arrive." });
+  $("#plotLoc").innerHTML = hbarsHTML(tally(E.map(e => e.location)).slice(0, 8).map(r => ({ ...r, color:"linear-gradient(90deg,var(--amber),var(--coral))" })), { empty:"No locations reported yet." });
+}
+
+/* ---------------- case studies ---------------- */
+function caseArt(i){
+  const h = hash("case" + i), pts = Array.from({length:7}, (_,k) => { const q = hash("case" + i + ":" + k); return [30 + (q % 240), 18 + ((q >>> 9) % 84)]; });
+  let g = ""; pts.forEach((a,k) => pts.slice(k+1).forEach((b,j) => { if ((h >>> ((k+j)%20)) & 1) g += `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>`; }));
+  pts.forEach((a,k) => g += `<circle cx="${a[0]}" cy="${a[1]}" r="${k === 0 ? 9 : 5}" fill="${k === 0 ? "#fff" : "rgba(255,255,255,.75)"}"/>`);
+  return `<svg viewBox="0 0 300 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${g}</svg>`;
+}
+async function renderCases(){
+  const list = CONFIG.CASE_STUDIES || [];
+  $("#casesGrid").innerHTML = list.map((c,i) => `<article class="case" style="--cc:var(${c.color || "--violet"})">
+      <div class="case-art">${caseArt(i)}</div>
+      <div class="case-body"><span class="tag">${esc(c.field || "")}</span><h3>${esc(c.title)}</h3><p>${esc(c.summary || "")}</p>
+      <div class="case-actions" id="caseAct${i}"><span class="soon">Checking for PDF…</span></div></div></article>`).join("");
+  list.forEach(async (c,i) => {
+    let ok = false;
+    if (c.pdf && location.protocol.startsWith("http")) { try { const r = await fetch(c.pdf, { method:"HEAD", cache:"no-store" }); ok = r.ok; } catch(e){} }
+    $("#caseAct" + i).innerHTML = ok
+      ? `<a class="btn btn-dark" href="${esc(c.pdf)}" target="_blank" rel="noopener">Read PDF</a><a class="btn btn-plain" href="${esc(c.pdf)}" download>Download</a>`
+      : `<span class="soon">PDF coming soon</span>`;
+  });
+}
+
+/* ---------------- creator ---------------- */
+function renderCreator(){
+  const c = CONFIG.CREATOR || {};
+  $("#creatorKicker").textContent = c.title || ""; $("#creatorTitle").textContent = `Meet ${c.name || "the creator"}`;
+  $("#creatorBio").innerHTML = (c.bio || []).map(p => `<p>${esc(p)}</p>`).join("");
+  const links = [];
+  if (c.email) links.push(`<a class="btn btn-hot" href="mailto:${esc(c.email)}?subject=${encodeURIComponent("Collaborating on NetREm")}">Email me to collaborate</a>`);
+  (c.links || []).forEach((l,k) => { const u = normLink(l.url); if (u) links.push(`<a class="btn ${k === 0 && !c.email ? "btn-dark" : "btn-plain"}" href="${esc(u)}" target="_blank" rel="noopener">${esc(l.label)}</a>`); });
+  $("#creatorLinks").innerHTML = links.join("");
+  const port = $("#portrait"), ini = esc(initials(c.name || "?"));
+  port.innerHTML = `<div class="ph" aria-hidden="true">${ini}</div>` +
+    `<span class="orb" style="width:34px;height:34px;right:-6px;top:24px;background:var(--amber)"></span><span class="orb" style="width:22px;height:22px;left:-4px;bottom:46px;background:var(--cyan)"></span><span class="orb" style="width:16px;height:16px;right:30px;bottom:-4px;background:var(--lime)"></span>`;
+  if (c.photo){ const img = new Image(); img.alt = `Photo of ${c.name || "the creator"}`; img.onload = () => { port.querySelector(".ph").replaceWith(img); }; img.src = c.photo; }
 }
 
 /* ---------------- domain explorer ---------------- */
@@ -1697,7 +2049,7 @@ $("#domTabs").addEventListener("keydown", e => { if (e.key !== "ArrowRight" && e
 $("#beta").addEventListener("input", e => { D.beta = Number(e.target.value); $("#betaOut").textContent = D.beta.toFixed(2); renderDomain(); });
 $("#alpha").addEventListener("input", e => { D.alpha = Number(e.target.value); $("#alphaOut").textContent = D.alpha.toFixed(2); renderDomain(); });
 renderDomain();
-window.SEM_READY = true; renderSeminar();
+window.SEM_READY = true; renderSeminar(); renderInsights(); renderCases(); renderCreator();
 
 /* ---------------- boot ---------------- */
 (async function boot(){
